@@ -1,0 +1,187 @@
+@charset "UTF-8";
+
+
+
+#board_title {
+	width: 70%;
+	margin: 0 auto;
+	text-align: left;
+	font-size: 25px;
+	padding-top: 40px;
+}
+
+#container {
+    width: 70%;
+	margin: 0 auto; 
+}
+     
+#write_form {
+	margin: 0 auto;
+}
+
+#list {
+    text-align: center;
+}
+   
+#write {
+    text-align: right;
+}
+     
+
+#board_nav {
+	margin: 0 auto;
+	width: 70%;
+}
+
+
+#nav_list {
+	color: #808080;
+	width: 250px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#list_name{
+	text-align: center;
+	padding-bottom: 20px;
+	padding-top: 40px;
+	font-size: 20px;
+}
+
+.table > thead {
+    background-color: #ffffff;
+}
+    
+.table > thead > tr > th {
+    text-align: center;
+}
+    
+#boardlist {
+    background-color: #ffffff;
+    text-align: left;
+}
+    
+.table > tbody > tr > td {
+    text-align: center;
+}
+
+#search_bar {
+	width: 300px;
+	float: right;
+}
+  
+#search_button {
+	border-color: gray;
+	color: gray;
+	background-color: white;
+}
+
+
+#search_input {
+	border-color: gray;
+}
+  
+#paging {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+   
+#page_num {
+	color:gray;
+}   
+     
+.hit {
+    animation-name: blink;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+     
+@keyframes blink {
+    from {color: white;}
+    30% {color: yellow;}
+    to {color: red; font-weight: bold;}
+    /* 0% {color:white;}
+    30% {color: yellow;}
+    100% {color:red; font-weight: bold;} */
+}
+
+/* board_content */
+
+
+
+#title_form {
+	border: #808080 solid 3px;
+	border-left-color: white;
+	border-right-color: white;
+}
+
+#form_title {
+	width: 130px;
+	height: 30px;
+	text-align: center;
+	padding: 15px;
+	background-color: #f4f4f4; 
+	font-size: 15px;
+	border: #c0c0c0 solid 1px;
+}
+
+#form_content {
+	width: 500px;
+	height: 40px;
+	text-align: left;
+	padding: 10px; 
+	font-size: 15px;
+	border: #c0c0c0 solid 1px;
+}
+
+#board_content {
+	height: 500px;
+	padding: 20px;
+	font-size: 15px;
+}
+
+#board_content-1 {
+	height: 250px;
+	padding: 20px;
+	font-size: 15px;
+	border: #c0c0c0 solid 1px
+}
+
+#board_content-2 {
+	height: 250px;
+	padding: 20px;
+	font-size: 15px;
+	border: #c0c0c0 solid 1px
+}
+
+#list_button {
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	text-align: center;
+}
+
+#button_border {
+	border: gray 1px solid;
+	border-radius: 5px;
+	background-color: white;
+	width: 60px;
+	height: 30px;
+	color: #4c4c4c;
+}
+
+#button_title {
+	color: #4c4c4c;
+}
+
+#write_button {
+	width: 100%;
+	height: 100%;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	text-align: right;
+}
+
+
+

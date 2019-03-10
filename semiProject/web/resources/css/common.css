@@ -1,0 +1,136 @@
+
+
+/****-------- reset -------****/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.clear {
+	clear:both;
+}
+
+*{margin:0; padding:0;}
+html,
+body{}
+body{height:100%;font:'verdana', 'tahoma', 'dotum', "�룍��", sans-serif; color:#000;}
+input, select, textarea, option, button{font:'verdana', 'tahoma', 'dotum', "�룍��", sans-serif; color:#000;}
+em, address{font-style:normal;}
+b, strong{font-style:normal;}
+img, iframe, frameset, fieldset, input, select{border:none;}
+a{text-decoration:none; color:#000;vertical-align:middle;}
+a:link,a:visited,a:active,a:hover {text-decoration:none;}
+ul, li{list-style:none;}
+table,th,td{border-collapse: collapse;border-spacing:0px 0px;}
+input:focus {outline: none;}
+.clr,.clear{clear:both;}
+.left{float:left;}
+.right{float:right;}
+
+
+/**-- common(공통으로 처리할 것) --**/
+body{min-width:1100px;}
+.container{width:1100px !important;}
+.container .row{clear:both;}
+
+
+/**-- top --**/
+header .t_nav{
+	clear:both;
+	width:100%;
+	padding:0 10px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+}
+header .t_nav ul{float:right;}
+header .t_nav ul li{display:inline-block;}
+header .t_nav ul li a{
+	display:inline-block;
+	padding:0 5px;
+	height:30px;
+	line-height:30px;
+	font-size:12px;
+}
+
+header .logo{
+	clear:both;
+	text-align:center;
+}
+header .logo a{display:inline-block;}
+header .logo a img{width:150px;}
+
+header .dropdown-menu{
+	top:43px !important;
+	border-radius:0 !important;
+	width:1070px !important;
+	padding:.5rem 0 1.5rem !important;
+}
+header .dropdown-menu .gnb-menu > li{
+	display:inline-block;
+	vertical-align:top;
+	width:200px;
+}
+header .dropdown-menu .gnb-menu .menu{
+	display:block;
+	padding:1rem 1.5rem 1.5rem;
+	}
+
+.container .main-con-tit{font-size:22px;line-height:22px;}
+.container .main-con-tit a.btn-more{
+	display:inline-block;
+	float:right;
+	font-size:14px;
+	line-height:22px;
+	}
+
+
+/* 메인메뉴 */
+.nav .nav-item > a{color:#fff;}
+
+
+
+
+
+
+
+
+

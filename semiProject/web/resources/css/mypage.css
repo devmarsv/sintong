@@ -1,0 +1,161 @@
+
+
+/***-- mypage --***/
+#mypage_title {
+	width: 100%;
+	margin: 0 auto;
+	text-align: left;
+	font-size: 25px;
+	padding-top: 40px;
+}
+
+
+#mypage_nav {
+	width: 100%;
+	margin: 0 auto;
+}
+
+#nav_list {
+	color: #808080;
+	width: 165px;
+	margin: 0 auto;
+	text-align: center;
+} 
+
+#name_hello {
+	font-size: 30px;
+	padding: 30px;
+}
+
+#info_table {
+	margin: 0 auto;
+	text-align: center;
+	background-color: #f3f3f3;
+	border: white solid 3px;
+	width: 100%;
+	height: 200px;
+	padding: 20px;
+}
+
+#list_name{
+	text-align: center;
+	padding-bottom: 20px;
+	padding-top: 40px;
+	font-size: 20px;
+}
+
+#info_table img{
+	width: 100px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+#info_table a{
+	float: right;
+	padding: 20px;
+	font-size: 10px;
+}
+
+#order_delivery_title {
+	font-size: 20px;
+	padding: 30px;
+}
+
+#detail_link {
+	font-size: 10px;
+}
+
+#boardlist {
+    background-color: #ffffff;
+    text-align: left;
+}
+
+#search_bar {
+	width: 300px;
+	float: right;
+}
+  
+#search_button {
+	border-color: gray;
+	color: gray;
+	background-color: white;
+}
+
+
+#search_input {
+	border-color: gray;
+}
+  
+#paging {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+   
+#page_num {
+	color:gray;
+}   
+
+#title_form {
+	border: #808080 solid 3px;
+	border-left-color: white;
+	border-right-color: white;
+}
+
+#form_title {
+	width: 130px;
+	height: 30px;
+	text-align: center;
+	padding: 15px;
+	background-color: #f4f4f4; 
+	font-size: 15px;
+	border: #c0c0c0 solid 1px;
+}
+
+#form_content {
+	width: 500px;
+	height: 40px;
+	text-align: left;
+	padding: 10px; 
+	font-size: 15px;
+	border: #c0c0c0 solid 1px;
+}
+
+#board_content-1 {
+	height: 250px;
+	padding: 20px;
+	font-size: 15px;
+	border: #c0c0c0 solid 1px
+}
+
+#board_content-2 {
+	height: 250px;
+	padding: 20px;
+	font-size: 15px;
+	border: #c0c0c0 solid 1px
+}
+
+#list_button {
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	text-align: center;
+}
+
+#button_border {
+	border: gray 1px solid;
+	border-radius: 5px;
+	background-color: white;
+	width: 60px;
+	height: 30px;
+	color: #4c4c4c;
+}
+
+#button_title {
+	color: #4c4c4c;
+}
+
+#board_content {
+	height: 500px;
+	padding: 20px;
+	font-size: 15px;
+}
