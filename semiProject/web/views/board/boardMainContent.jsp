@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" errorPage="boardError.jsp" %>
+<%@ page import="notice.model.vo.Notice, java.util.*, java.sql.Date" %>
+<%
+	Notice notice = (Notice)request.getAttribute("notice");
+	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,24 +21,30 @@
 		<table id="title_form">
 			<tr>
 				<th id="form_title">제목</th>
-				<td colspan="3" id="form_content">예시</td>
+				<td colspan="3" id="form_content"><%= notice.getNoticeTitle() %></td>
 			</tr>
 			<tr>
 				<th id="form_title">작성자</th>
-				<td colspan="3" id="form_content">예시</td>
+				<td colspan="3" id="form_content"><%= notice.getMemUserid() %></td>
 			</tr>
 			<tr>
 				<th id="form_title">작성일</th>
-				<td id="form_content">예시</td>
+				<td id="form_content"><%= notice.getNoticeDate() %></td>
 				<th id="form_title">조회수</th>
-				<td id="form_content">예시</td>
+				<td id="form_content"><%= notice.getNoticeReadCount() %></td>
 			</tr>
 			<tr>
-				<td colspan="4" id="board_content">내용</td>
+				<td colspan="4" id="board_content"><%= notice.getNoticeContent() %></td>
 			</tr>
 			<tr>
 				<th id="form_title">첨부파일</th>
-				<td colspan="3" id="form_content"><a href="#;">예시</a></td>
+				<td colspan="3" id="form_content"><% if(notice.getNoticeImg() == null){ %>
+					첨부파일 없음
+					<% } else { %>
+					<a href="/semi/bfdown?file=<%= notice.getNoticeImg() %>">
+					<%= notice.getNoticeImg() %></a>
+					<% } %>
+				</td>
 			</tr>
 			<tr>
 				<th id="form_title">이전글</th>
