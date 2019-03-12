@@ -43,5 +43,19 @@ public class FAQService {
 		close(con);
 		return f;
 	}
+
+	public int getSearchListCount(String search) {
+		Connection con = getConnection();
+		int listCount = new FAQDao().getSearchListCount(con, search);
+		close(con);
+		return listCount;
+	}
+
+	public ArrayList<FAQ> selectSearchTitle(String search, int currentPage, int limit) {
+		Connection con = getConnection();
+		ArrayList<FAQ> list = new FAQDao().selectSearchTitle(con, search, currentPage, limit);
+		close(con);
+		return list;
+	}
 	
 }

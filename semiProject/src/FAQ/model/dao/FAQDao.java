@@ -129,4 +129,70 @@ public class FAQDao {
 		return faq;
 	}
 
+	public int getSearchListCount(Connection con, String search) {
+		int listCount = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String query = "select count(*) from faq where faq_title like '%" + search + "%'";
+		
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return listCount;
+	}
+
+	public ArrayList<FAQ> selectSearchTitle(Connection con, String search, int currentPage, int limit) {
+		ArrayList<FAQ> list = new ArrayList<FAQ>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = "select * " + 
+				"from (select rownum rnum, substr(faq_no,2), faq_title, faq_date, faq_content, faq_reply_content, faq_readcount, mem_userid " + 
+				       "from (select * from faq where faq_title like ? order by to_number(substr(faq_no,2)) desc))" + 
+				"where rnum >= ? and rnum <= ?";
+		
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "%" + search + "%");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				FAQ f = new FAQ();
+				
+				f.setFaqNo(rset.getString("substr(faq_no,2)"));
+				f.setFaqTitle(rset.getString("faq_title"));
+				f.setFaqDate(rset.getDate("faq_date"));
+				f.setFaqContent(rset.getString("faq_content"));
+				f.setFaqReplyContent(rset.getString("faq_reply_content"));
+				f.setFaqReadCount(rset.getInt("faq_readcount"));
+				f.setMemUserid(rset.getString("mem_userid"));
+				
+				list.add(f);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
 }
