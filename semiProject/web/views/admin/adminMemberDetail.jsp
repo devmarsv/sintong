@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="admin.member.model.vo.Member" %>
+<%
+	Member member = (Member) request.getAttribute("member");
+%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -28,51 +32,55 @@
 						<tbody>
 							<tr>
 								<th width="20%">이름</th>
-								<td>kim</td>
+								<td><%=member.getMemName() %></td>
 							</tr>
 							<tr>
 								<th width="20%">아이디</th>
-								<td>user1</td>
+								<td><%=member.getMemUserId() %></td>
 							</tr>
 							<tr>
 								<th width="20%">생년월일</th>
-								<td>000000</td>
+								<td><%=member.getMemBirth() %></td>
 							</tr>
 							<tr>
 								<th width="20%">전화번호</th>
-								<td>01044443333</td>
+								<td><%=member.getMemTel() %></td>
+							</tr>
+							<tr>
+								<th width="20%">이메일</th>
+								<td><%=member.getMemEmail() %></td>
 							</tr>
 							<tr>
 								<th width="20%">회원등급</th>
-								<td>1</td>
+								<td><%=member.getMemGrade() %></td>
 							</tr>
 							<tr>
 								<th width="20%">성별</th>
-								<td>남</td>
+								<td><%=member.getMemGender() %></td>
 							</tr>
 							<tr>
 								<th width="20%">주소1</th>
-								<td>서울시 강남구</td>
+								<td><%=member.getMemAddr1() %></td>
 							</tr>
 							<tr>
 								<th width="20%">주소2</th>
-								<td></td>
+								<td><%=member.getMemAddr2() %></td>
 							</tr>
 							<tr>
 								<th width="20%">회원가입일</th>
-								<td>2019년 3월 4일</td>
+								<td><%=member.getMemEnrollDate() %></td>
 							</tr>
 							<tr>
 								<th width="20%">총 적립금</th>
-								<td>12,300원</td>
+								<td><%=member.getMemPointNum() %> 원</td>
 							</tr>
 							<tr>
 								<th width="20%">총 쿠폰수</th>
-								<td>3장</td>
+								<td><%=member.getMemCouponNum() %> 장</td>
 							</tr>
 							<tr>
 								<td colspan="2">
-									<a href="#" class="btn btn-success btn-icon-split">
+									<a href="/semi/mmodify?userid=<%=member.getMemUserId() %>" class="btn btn-success btn-icon-split">
 										<span class="icon text-white-50" size="20px"> <i class="fas fa-check"></i></span>
 										<span class="text">수정</span>
 									</a> &nbsp; &nbsp;
