@@ -63,13 +63,15 @@ public class NoticeTitleSearchServlet extends HttpServlet {
 		System.out.println("currentPage : " + currentPage );
 		RequestDispatcher view = null;
 		if(list.size() > 0) {
-			view = request.getRequestDispatcher("views/board/boardMain.jsp");
+			view = request.getRequestDispatcher("views/board/boardMainSearch"
+					+ ".jsp");
 			request.setAttribute("list", list);
 			request.setAttribute("currentPage", currentPage);
 			request.setAttribute("maxPage", maxPage);
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);
 			request.setAttribute("listCount", listCount);
+			request.setAttribute("search", search);
 			view.forward(request, response);
 		} else {
 			view = request.getRequestDispatcher("views/board/boardError.jsp");

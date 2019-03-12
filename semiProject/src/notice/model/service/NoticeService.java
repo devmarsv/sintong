@@ -10,7 +10,8 @@ import notice.model.dao.NoticeDao;
 import notice.model.vo.Notice;
 
 public class NoticeService {
-
+	public NoticeService() {}
+	
 	public int getListCount() {
 		Connection con = getConnection();
 		int listCount = new NoticeDao().getListCount(con);
@@ -25,7 +26,7 @@ public class NoticeService {
 		return list;
 	}
 
-	public void addReadCount(int noticeNo) {
+	public int addReadCount(int noticeNo) {
 		Connection con = getConnection();
 		int result = new NoticeDao().addReadCount(con, noticeNo);
 		if(result > 0)
@@ -33,7 +34,7 @@ public class NoticeService {
 		else
 			rollback(con);
 		close(con);
-		return;		
+		return result;		
 	}
 
 	

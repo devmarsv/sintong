@@ -1,6 +1,7 @@
-package notice.controller;
+package FAQ.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
+import FAQ.model.service.FAQService;
+import FAQ.model.vo.FAQ;
 
 /**
- * Servlet implementation class NoticeDetailServlet
+ * Servlet implementation class FAQListServlet
  */
-@WebServlet("/bdetail")
-public class NoticeDetailServlet extends HttpServlet {
+@WebServlet("/flist")
+public class FAQListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDetailServlet() {
+    public FAQListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,29 +32,38 @@ public class NoticeDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int noticeNo = Integer.parseInt(request.getParameter("nno"));
 		int currentPage = 1;
 		
-		NoticeService nservice = new NoticeService();
-		
-		if(request.getParameter("page") == null) {
-			
+		if(request.getParameter("page") != null) {
+			currentPage = Integer.parseInt(request.getParameter("page"));
 		}
 		
-		int result = nservice.addReadCount(noticeNo);
+		int limit = 10;
+		FAQService fservice = new FAQService();
+		int listCount = fservice.getListCount();
+		ArrayList<FAQ> list = fservice.selectList(currentPage, limit);
+		int maxPage = (int)((double)listCount / limit + 0.9);
+		int startPage = (((int)((double)currentPage / limit + 0.9)) - 1) * limit + 1;
+		int endPage = startPage + limit - 1;
 		
-		Notice notice = nservice.selectNotice(noticeNo);
+		if(maxPage < endPage)
+			endPage = maxPage;
 		
 		response.setContentType("text/html; charset=utf-8");
 		RequestDispatcher view = null;
-		if(notice != null) {
-			view = request.getRequestDispatcher("views/board/boardMainContent.jsp");
-			request.setAttribute("notice", notice);
+		if(list.size() > 0) {
+			view = request.getRequestDispatcher("views/board/boardFAQ.jsp");
+			request.setAttribute("list", list);
 			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("maxPage", maxPage);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("listCount", listCount);
 			view.forward(request, response);
 		} else {
+			System.out.println("FAQ 에러");
 			view = request.getRequestDispatcher("views/board/boardError.jsp");
-			request.setAttribute("message", "게시글 조회를 실패하였습니다.");
+			request.setAttribute("message", currentPage + "에 대한 FAQ 목록 조회에 실패하였습니다.");
 			view.forward(request, response);
 		}
 	}

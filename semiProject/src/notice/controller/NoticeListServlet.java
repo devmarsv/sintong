@@ -66,7 +66,7 @@ public class NoticeListServlet extends HttpServlet {
 			request.setAttribute("listCount", listCount);
 			view.forward(request, response);
 		} else {
-			System.out.println("에러");
+			System.out.println("공지사항 에러");
 			view = request.getRequestDispatcher("views/board/boardError.jsp");
 			request.setAttribute("message", currentPage + "에 대한 게시글 목록 조회에 실패하였습니다.");
 			view.forward(request, response);

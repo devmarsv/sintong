@@ -1,4 +1,4 @@
-package notice.controller;
+package FAQ.controller;
 
 import java.io.IOException;
 
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
+import FAQ.model.service.FAQService;
+import FAQ.model.vo.FAQ;
 
 /**
- * Servlet implementation class NoticeDetailServlet
+ * Servlet implementation class FAQDetailServlet
  */
-@WebServlet("/bdetail")
-public class NoticeDetailServlet extends HttpServlet {
+@WebServlet("/fdetail")
+public class FAQDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDetailServlet() {
+    public FAQDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,29 +31,29 @@ public class NoticeDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int noticeNo = Integer.parseInt(request.getParameter("nno"));
+		int faqNo = Integer.parseInt(request.getParameter("fno"));
 		int currentPage = 1;
 		
-		NoticeService nservice = new NoticeService();
+		FAQService fservice = new FAQService();
 		
 		if(request.getParameter("page") == null) {
 			
 		}
 		
-		int result = nservice.addReadCount(noticeNo);
+		int result = fservice.addReadCount(faqNo);
 		
-		Notice notice = nservice.selectNotice(noticeNo);
+		FAQ faq = fservice.selectFaq(faqNo);
 		
 		response.setContentType("text/html; charset=utf-8");
 		RequestDispatcher view = null;
-		if(notice != null) {
-			view = request.getRequestDispatcher("views/board/boardMainContent.jsp");
-			request.setAttribute("notice", notice);
+		if(faq != null) {
+			view = request.getRequestDispatcher("views/board/boardFAQContent.jsp");
+			request.setAttribute("faq", faq);
 			request.setAttribute("currentPage", currentPage);
 			view.forward(request, response);
 		} else {
 			view = request.getRequestDispatcher("views/board/boardError.jsp");
-			request.setAttribute("message", "게시글 조회를 실패하였습니다.");
+			request.setAttribute("message", "FAQ 상세조회를 실패하였습니다.");
 			view.forward(request, response);
 		}
 	}

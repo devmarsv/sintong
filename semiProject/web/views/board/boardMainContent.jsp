@@ -38,27 +38,20 @@
 			</tr>
 			<tr>
 				<th id="form_title">첨부파일</th>
-				<td colspan="3" id="form_content"><% if(notice.getNoticeImg() == null){ %>
-					첨부파일 없음
+				<td colspan="3" id="form_content">
+					<% if(notice.getNoticeImg() == null){ %>
+						첨부파일 없음
 					<% } else { %>
-					<a href="/semi/bfdown?file=<%= notice.getNoticeImg() %>">
+						<a href="/semi/bfdown?file=<%= notice.getNoticeImg() %>">
 					<%= notice.getNoticeImg() %></a>
 					<% } %>
 				</td>
-			</tr>
-			<tr>
-				<th id="form_title">이전글</th>
-				<td colspan="3" id="form_content"><a href="#;">예시 제목</a></td>
-			</tr>
-			<tr>
-				<th id="form_title">다음글</th>
-				<td colspan="3" id="form_content"><a href="#;">예시 제목</a></td>
 			</tr>
 		</table>
 
 		<div id="list_button">
 			<button type="button" id="button_border">
-				<a href="boardMain.jsp" id="button_title">목록</a>
+				<a href="/semi/blist" id="button_title">목록</a>
 			</button>
 		</div>
 
