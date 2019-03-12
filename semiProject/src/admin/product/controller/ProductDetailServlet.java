@@ -1,8 +1,6 @@
-package admin.member.controller;
+package admin.product.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.member.model.service.MemberService;
-import admin.member.model.vo.Member;
+import admin.product.model.service.ProductService;
+import admin.product.model.vo.Product;
 
 /**
- * Servlet implementation class MemberSearchServlet
+ * Servlet implementation class ProductDetailServlet
  */
-@WebServlet("/msearch")
-public class MemberSearchServlet extends HttpServlet {
+@WebServlet("/pdetail")
+public class ProductDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberSearchServlet() {
+    public ProductDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,21 +32,19 @@ public class MemberSearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String soption = request.getParameter("soption");
-		String keyword = request.getParameter("keyword");
-		String grade = request.getParameter("grade");
-		String dateSearch = request.getParameter("jb-radio");
-		Boolean ds = Boolean.parseBoolean(dateSearch);
-		String startDate = request.getParameter("from");
-		String endDate = request.getParameter("to");
+		System.out.println();
+		System.out.println("pdetail in...");
+		System.out.println();
+		String pNo = request.getParameter("pno");
+		System.out.println("pNo : " + pNo);
 		
-		ArrayList<Member> list = new MemberService().selectMembers(soption, keyword, grade, ds, startDate, endDate);
+		Product p = new ProductService().selectProduct(pNo);
 		
+		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		RequestDispatcher view = request.getRequestDispatcher("views/admin/adminMemberSearch.jsp");
-		request.setAttribute("list", list);
+		RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminProductDetail.jsp");
+		request.setAttribute("product", p);
 		view.forward(request, response);
-		
 	}
 
 	/**

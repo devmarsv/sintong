@@ -225,4 +225,77 @@ public class MemberDao {
 		return result;
 	}
 
+	public int updateMember(Connection conn, String userId, String grade) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String query = "update member set grade = ? where mem_userid = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, grade);
+			pstmt.setString(2, userId);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteMember(Connection conn, Member deleteMember) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query1 = "insert into drop_member values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query1);
+			pstmt.setString(1, deleteMember.getMemUserId());
+			pstmt.setString(2, deleteMember.getMemPasswd());
+			pstmt.setString(3, deleteMember.getMemName());
+			pstmt.setDate(4, deleteMember.getMemBirth());
+			pstmt.setString(5, deleteMember.getMemGender());
+			pstmt.setString(6, deleteMember.getMemTel());
+			pstmt.setString(7, deleteMember.getMemEmail());
+			pstmt.setString(8, deleteMember.getMemAddr1());
+			pstmt.setString(9, deleteMember.getMemAddr2());
+			pstmt.setDate(10, deleteMember.getMemEnrollDate());
+			pstmt.setInt(11, deleteMember.getMemPointNum());
+			pstmt.setInt(12, deleteMember.getMemCouponNum());
+			pstmt.setString(13, deleteMember.getMemGrade());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		System.out.println("insert drop result : " + result);
+		
+		PreparedStatement pstmt1 = null;
+		
+		String query2 = "delete from member where mem_userid = ?";
+		
+		try {
+			pstmt1 = conn.prepareStatement(query2);
+			pstmt1.setString(1, deleteMember.getMemUserId());
+			
+			result = pstmt1.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt1);
+		}
+		
+		return result;
+	}
+
 }

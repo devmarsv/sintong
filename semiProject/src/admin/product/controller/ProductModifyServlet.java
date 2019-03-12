@@ -1,8 +1,6 @@
-package admin.member.controller;
+package admin.product.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.member.model.service.MemberService;
-import admin.member.model.vo.Member;
+import admin.product.model.service.ProductService;
+import admin.product.model.vo.Product;
 
 /**
- * Servlet implementation class MemberSearchServlet
+ * Servlet implementation class ProductModifyServlet
  */
-@WebServlet("/msearch")
-public class MemberSearchServlet extends HttpServlet {
+@WebServlet("/pmodify")
+public class ProductModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberSearchServlet() {
+    public ProductModifyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +31,19 @@ public class MemberSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println();
+		System.out.println("pmodify in...");
+		System.out.println();
+		String pNo = request.getParameter("pno");
+		System.out.println("pNo : " + pNo);
 		
-		String soption = request.getParameter("soption");
-		String keyword = request.getParameter("keyword");
-		String grade = request.getParameter("grade");
-		String dateSearch = request.getParameter("jb-radio");
-		Boolean ds = Boolean.parseBoolean(dateSearch);
-		String startDate = request.getParameter("from");
-		String endDate = request.getParameter("to");
+		Product p = new ProductService().selectProduct(pNo);
 		
-		ArrayList<Member> list = new MemberService().selectMembers(soption, keyword, grade, ds, startDate, endDate);
-		
+		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		RequestDispatcher view = request.getRequestDispatcher("views/admin/adminMemberSearch.jsp");
-		request.setAttribute("list", list);
+		RequestDispatcher view = request.getRequestDispatcher("/views/admin/adminProductModify.jsp");
+		request.setAttribute("product", p);
 		view.forward(request, response);
-		
 	}
 
 	/**

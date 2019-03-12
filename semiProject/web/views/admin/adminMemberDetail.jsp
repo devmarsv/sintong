@@ -52,7 +52,17 @@
 							</tr>
 							<tr>
 								<th width="20%">회원등급</th>
-								<td><%=member.getMemGrade() %></td>
+								<% if(member.getMemGrade().equals("1")) {%>
+								<td>점주</td>
+								<% } else if(member.getMemGrade().equals("2")) {%>
+								<td>골드회원</td>
+								<% } else if(member.getMemGrade().equals("3")) {%>
+								<td>실버회원</td>
+								<% } else if(member.getMemGrade().equals("4")) {%>
+								<td>일반회원</td>
+								<% } else if(member.getMemGrade().equals("9")) {%>
+								<td>블랙리스트</td>
+								<% } %>
 							</tr>
 							<tr>
 								<th width="20%">성별</th>
@@ -84,7 +94,7 @@
 										<span class="icon text-white-50" size="20px"> <i class="fas fa-check"></i></span>
 										<span class="text">수정</span>
 									</a> &nbsp; &nbsp;
-									<a href="#"	class="btn btn-danger btn-icon-split">
+									<a href="/semi/mdelete?userid=<%=member.getMemUserId() %>" class="btn btn-danger btn-icon-split">
 										<span class="icon text-white-50"> <i class="fas fa-trash"></i></span>
 										<span class="text">회원 삭제</span>
 									</a>

@@ -13,6 +13,7 @@
 </head>
 
 <body>
+	<form action="/semi/pmodack" id="frm" name="frm">
 	<div class="container">
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
 			<h1 class="h3 mb-0 text-gray-800" id="head">상품상세정보</h1>
@@ -28,69 +29,65 @@
 						<tbody>
 							<tr>
 								<th width="20%">상품코드</th>
-								<td><%=p.getpNo() %></td>
+								<td><input type="text" class="form-control"	aria-describedby="inputForm" name="pno" value="<%=p.getpNo() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">카테고리</th>
-								<td><%=p.getpCategory() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="category" value="<%=p.getpCategory() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">상품명</th>
-								<td><%=p.getpName() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="name" value="<%=p.getpName() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">가격명</th>
-								<td><%=p.getpPrice() %> 원</td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="price" value="<%=p.getpPrice() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">옵션1</th>
-								<td><%=p.getpOption1() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="option1" value="<%=p.getpOption1() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">옵션2</th>
-								<td><%=p.getpOption2() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="option2" value="<%=p.getpOption2() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">재고수량</th>
-								<td><%=p.getpStock() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="stock" value="<%=p.getpStock() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">원산지</th>
-								<td><%=p.getpOrigin() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="origin" value="<%=p.getpOrigin() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">상품설명</th>
-								<td><%=p.getpDesc() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="desc" value="<%=p.getpDesc() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">상품상세설명</th>
-								<td><%=p.getpDetail() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="detail" value="<%=p.getpDetail() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">상품이미지</th>
-								<td><%=p.getpImg() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="img" value="<%=p.getpImg() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">상품리뷰 개수</th>
-								<td><%=p.getpReviewNum() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="reviewnum" value="<%=p.getpReviewNum() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">상품문의 개수</th>
-								<td><%=p.getpQnaNum() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="qnanum" value="<%=p.getpQnaNum() %>"></td>
 							</tr>
 							<tr>
 								<th width="20%">판매매장코드</th>
-								<td><%=p.getsNo() %></td>
+								<td><input type="text" class="form-control" aria-describedby="inputForm" name="sno" value="<%=p.getsNo() %>"></td>
 							</tr>
 							<tr>
 								<td colspan="2">
-									<a href="/semi/pmodify?pno=<%=p.getpNo() %>" class="btn btn-success btn-icon-split">
-										<span class="icon text-white-50" size="20px"> <i class="fas fa-check"></i></span>
-										<span class="text">수정</span>
-									</a> &nbsp; &nbsp;
-									<a href="/semi/pdelete?pno=<%=p.getpNo() %>" class="btn btn-danger btn-icon-split">
-										<span class="icon text-white-50"> <i class="fas fa-trash"></i></span>
-										<span class="text">상품 삭제</span>
+									<a href="#" class="btn btn-primary btn-icon-split" onclick="document.getElementById('frm').submit();">
+										<span class="icon text-whisste-50"> <i class="fas fa-check"></i></span>
+										<span class="text">완료</span>
 									</a>
 								</td>
 							</tr>
@@ -107,5 +104,6 @@
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	</form>
 </body>
 </html>

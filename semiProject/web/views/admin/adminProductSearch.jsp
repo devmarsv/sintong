@@ -164,7 +164,7 @@
                     <% if(list != null) { %>
                     <% for(Product p : list) { %>
                     <tr>
-                     	<td><a href="/semi/pdetail?pno=<%=p.getpNo()%>"><%= p.getpNo() %></a></td>
+                     	<td><a href="/semi/mdetail?pno=<%=p.getpNo()%>"><%= p.getpNo() %></a></td>
                      	<td><%= p.getpName() %></td>
                      	<td><%= p.getsNo() %></td>
                      	<td><%= p.getpOrigin() %></td>

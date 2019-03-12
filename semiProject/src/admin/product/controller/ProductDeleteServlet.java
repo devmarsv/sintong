@@ -1,4 +1,4 @@
-package admin.member.controller;
+package admin.product.controller;
 
 import java.io.IOException;
 
@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.member.model.service.MemberService;
+import admin.product.model.service.ProductService;
 
 /**
- * Servlet implementation class MemberModifyAckServlet
+ * Servlet implementation class ProductDeleteServlet
  */
-@WebServlet("/mmodack")
-public class MemberModifyAckServlet extends HttpServlet {
+@WebServlet("/pdelete")
+public class ProductDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberModifyAckServlet() {
+    public ProductDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,24 +30,25 @@ public class MemberModifyAckServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("mmodack in..");
-		String grade = request.getParameter("grade");
-		String userId = request.getParameter("userid");
-		System.out.println("grade : " + grade);
-		System.out.println("userId : " + userId);
+		System.out.println();
+		System.out.println("pdelete in...");
+		System.out.println();
 		
-		int result = new MemberService().updateMember(userId, grade);
+		String pNo = request.getParameter("pno");
+		System.out.println("pNo : " + pNo);
+		
+		int result = new ProductService().deleteProduct(pNo);
+		
 		RequestDispatcher view = null;
 		if(result > 0) {
-			view = request.getRequestDispatcher("views/admin/adminMemberSuccess.jsp");
-			request.setAttribute("message", "회원 정보 수정 완료!");
+			view = request.getRequestDispatcher("views/admin/adminProductSuccess.jsp");
+			request.setAttribute("message", "상품 삭제 완료!");
 			view.forward(request, response);
 		} else {
 			view = request.getRequestDispatcher("views/admin/adminError.jsp");
-			request.setAttribute("message", "회원 정보 수정 실패");
+			request.setAttribute("message", "상품 삭제  실패");
 			view.forward(request, response);
 		}
-		
 	}
 
 	/**

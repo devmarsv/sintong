@@ -1,8 +1,6 @@
 package admin.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,16 +13,16 @@ import admin.member.model.service.MemberService;
 import admin.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberSearchServlet
+ * Servlet implementation class MemberDeleteServlet
  */
-@WebServlet("/msearch")
-public class MemberSearchServlet extends HttpServlet {
+@WebServlet("/mdelete")
+public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberSearchServlet() {
+    public MemberDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,21 +32,21 @@ public class MemberSearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String soption = request.getParameter("soption");
-		String keyword = request.getParameter("keyword");
-		String grade = request.getParameter("grade");
-		String dateSearch = request.getParameter("jb-radio");
-		Boolean ds = Boolean.parseBoolean(dateSearch);
-		String startDate = request.getParameter("from");
-		String endDate = request.getParameter("to");
+		String userId = request.getParameter("userid");
+		Member deleteMember = new MemberService().selectMember(userId);
 		
-		ArrayList<Member> list = new MemberService().selectMembers(soption, keyword, grade, ds, startDate, endDate);
+		int result = new MemberService().deleteMember(deleteMember);
 		
-		response.setContentType("text/html; charset=utf-8");
-		RequestDispatcher view = request.getRequestDispatcher("views/admin/adminMemberSearch.jsp");
-		request.setAttribute("list", list);
-		view.forward(request, response);
-		
+		RequestDispatcher view = null;
+		if(result > 0) {
+			view = request.getRequestDispatcher("views/admin/adminMemberSuccess.jsp");
+			request.setAttribute("message", "회원 삭제 완료(DROP_MEMBER TABLE로 이동)!");
+			view.forward(request, response);
+		} else {
+			view = request.getRequestDispatcher("views/admin/adminError.jsp");
+			request.setAttribute("message", "회원 삭제  실패");
+			view.forward(request, response);
+		}
 	}
 
 	/**
