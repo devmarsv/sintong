@@ -6,8 +6,53 @@
 <meta charset="utf-8">
 <title>신통시장</title>
 <%@ include file="adminHeader.jsp"%>
-</head>
+<script type="text/javascript">
 
+	$(function(){
+		$.ajax({
+			url: "/semi/mcount",
+			type: "get",
+			dataType: "json",
+			success: function(data) {
+				console.log("success : " + data);
+				var jsonStr = JSON.stringify(data);
+				var json = JSON.parse(jsonStr);
+				var value = json.memCount;
+				
+				console.log("value : " + value);
+				
+				$("#memcount").html(value);
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				console.log("error : " + jqXHR + ", " + 
+						textStatus + ", " + errorThrown);
+			}
+		}); //mcount
+		
+		
+		$.ajax({
+			url: "/semi/scount",
+			type: "get",
+			dataType: "json",
+			success: function(data) {
+				console.log("success : " + data);
+				var jsonStr = JSON.stringify(data);
+				var json = JSON.parse(jsonStr);
+				var value = json.storeCount;
+				
+				console.log("value : " + value);
+				
+				$("#storecount").html(value);
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				console.log("error : " + jqXHR + ", " + 
+						textStatus + ", " + errorThrown);
+			}
+		}); //scount
+		
+	}); //document ready
+</script>
+</head>
 <body>
 	<div class="container">
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -24,7 +69,7 @@
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
 								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">일 주문금액</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">1,236,000원</div>
+								<div id="purcount" class="h5 mb-0 font-weight-bold text-gray-800"></div>
 							</div>
 							<div class="col-auto">
 								<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -41,7 +86,7 @@
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
 								<div class="text-xs font-weight-bold text-success text-uppercase mb-1">매장 현황</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">33개</div>
+								<div id="storecount" class="h5 mb-0 font-weight-bold text-gray-800"></div>
 							</div>
 							<div class="col-auto">
 								<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -60,7 +105,7 @@
 								<div class="text-xs font-weight-bold text-info text-uppercase mb-1">오늘 추가된 상품</div>
 								<div class="row no-gutters align-items-center">
 									<div class="col-auto">
-										<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">53개</div>
+										<div id="productcount" class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
 									</div>
 								</div>
 							</div>
@@ -79,7 +124,7 @@
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
 								<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">문의 대기</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+								<div id="qnacount" class="h5 mb-0 font-weight-bold text-gray-800"></div>
 							</div>
 							<div class="col-auto">
 								<i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -92,12 +137,12 @@
 
 			<!-- 회원 현황 Example -->
 			<div class="col-xl-3 col-md-6 mb-4">
-				<div class="card border-left-warning shadow h-100 py-2">
+				<div class="card border-left-primary shadow h-100 py-2">
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
 								<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">회원수</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">607</div>
+								<div id="memcount" class="h5 mb-0 font-weight-bold text-gray-800"></div>
 							</div>
 							<div class="col-auto">
 								<i class="far fa-user fa-2x text-gray-300"></i>
@@ -109,12 +154,12 @@
 
 			<!-- 게시판 현황 Example -->
 			<div class="col-xl-3 col-md-6 mb-4">
-				<div class="card border-left-warning shadow h-100 py-2">
+				<div class="card border-left-success shadow h-100 py-2">
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
 								<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">게시판 수</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">13</div>
+								<div id="boardcount" class="h5 mb-0 font-weight-bold text-gray-800"></div>
 							</div>
 							<div class="col-auto">
 								<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -125,12 +170,12 @@
 			</div>
 			
 			<div class="col-xl-3 col-md-6 mb-4">
-				<div class="card border-left-warning shadow h-100 py-2">
+				<div class="card border-left-info shadow h-100 py-2">
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
 								<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">새로운 글 수</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">13</div>
+								<div id="postcount" class="h5 mb-0 font-weight-bold text-gray-800"></div>
 							</div>
 							<div class="col-auto">
 								<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -143,18 +188,6 @@
 
 		<!-- Content Row -->
 
-
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">Summary</h6>
-			</div>
-			<div class="card-body">
-				<div class="text-center">
-					<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"	src="img/undraw_posting_photo.svg" alt="">
-				</div>
-				<p>위의 버튼을 누르면 요약설명</p>
-			</div>
-		</div>
 	</div>
 	<!-- container -->
 

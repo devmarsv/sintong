@@ -27,7 +27,7 @@
 		<header>
 			<div class="t_nav">
 				<ul>
-					<li><span class="user">USER1</span>님 안녕하세요!</li>
+					<li><span class="user">admin</span>님 안녕하세요!</li>
 					<li><a href="#;">로그아웃</a></li>
 				</ul>
 			</div>
@@ -39,11 +39,11 @@
 					<div class="collapse navbar-collapse show" id="navbarResponsive">
 						<ul class="nav">
 						  <li class="nav-item"><a class="nav-link" href="/semi/views/admin/adminIndex.jsp">대쉬보드</a></li>
-						  <li class="nav-item"><a class="nav-link" href="#;">회원</a></li>
-						  <li class="nav-item"><a class="nav-link" href="#;">주문/배송</a></li>
-						  <li class="nav-item"><a class="nav-link" href="#;">상품</a></li>
-						  <li class="nav-item"><a class="nav-link" href="#;">게시판</a></li>
-						  <li class="nav-item"><a class="nav-link" href="#;">매장</a></li>
+						  <li class="nav-item"><a class="nav-link" href="/semi/views/admin/adminMember.jsp">회원</a></li>
+						  <li class="nav-item"><a class="nav-link" href="/semi/views/admin/adminPurchase.jsp">주문/배송</a></li>
+						  <li class="nav-item"><a class="nav-link" href="/semi/views/admin/adminProduct.jsp">상품</a></li>
+						  <li class="nav-item"><a class="nav-link" href="/semi/views/admin/adminBoard.jsp">게시판</a></li>
+						  <li class="nav-item"><a class="nav-link" href="/semi/views/admin/adminStore.jsp">매장</a></li>
 						</ul>
 					</div>
 				</div>

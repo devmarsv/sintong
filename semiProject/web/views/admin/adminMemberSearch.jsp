@@ -206,6 +206,9 @@
 										<input type="text" id="datepicker1" name="from">
 										~
 										<input type="text" id="datepicker2" name="to">
+										<!-- <input type="text" class="form-control" aria-describedby="inputForm" id="entryDate1" name="from">
+										~
+										<input type="text" class="form-control"	aria-describedby="inputForm" id="entryDate2" name="to"> -->
 									</td>
 								</tr>
 								<tr>
@@ -281,7 +284,6 @@
 				enroll.style.display = '';
 			}
 		}
-			
 		
 	</script>
 	
