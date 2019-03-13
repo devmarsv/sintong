@@ -8,6 +8,7 @@
 	int endPage = ((Integer)request.getAttribute("endPage")).intValue();
 	int maxPage = ((Integer)request.getAttribute("maxPage")).intValue();
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();
+	String search = request.getAttribute("search").toString();
 	
 %>
 <!DOCTYPE html>
@@ -21,7 +22,7 @@
 	
 	<div class="container">
 	
-		<div id="list_name">공지사항</div>
+		<div id="list_name">검색결과</div>
 		<div>
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
@@ -51,7 +52,7 @@
 					<label>
 					<input type="search" class="form-control" placeholder="검색 키워드를 입력하세요" name="search" id="search_input"></label>
 					<span class="input-group-btn">
-						<input class="btn btn-secondary" type="submit" value="검색" id="search_button">
+						<input class="btn btn-secondary" type="submit" value="검색" id="search_button"></button>
 					</span>
 				</form>
 			</div>
@@ -63,11 +64,11 @@
 				<% if(currentPage <= 1){ %>
 					<li class="page-item"><a class="page-link" href="#" id="page_num">처음</a></li>
 				<% } else { %>
-					<li class="page-item"><a class="page-link" href="/semi/blist?page=1" id="page_num">처음</a></li>
+					<li class="page-item"><a class="page-link" href="/semi/btitlesearch?page=1&search=<%= search %>" id="page_num">처음</a></li>
 				<% } %>
 				<% if((currentPage - 10) < startPage && (currentPage - 10) > 1){ %>	
 					<li class="page-item">
-						<a class="page-link" href="/semi/blist?page=<%= startPage - 10 %>" aria-label="Previous" id="page_num"> 
+						<a class="page-link" href="/semi/btitlesearch?page=<%= startPage - 10 %>&search=<%= search %>" aria-label="Previous" id="page_num"> 
 						<span aria-hidden="true">&laquo;</span>
 						<span class="sr-only">Previous</span></a>
 					</li>
@@ -83,10 +84,10 @@
 				%>
 					<li class="page-item"><a class="page-link" href="#" id="page_num"><%= p %></a></li>
 				<% } else { %>
-					<li class="page-item"><a class="page-link" href="/semi/blist?page=<%= p %>" id="page_num"><%= p %></a></li>
+					<li class="page-item"><a class="page-link" href="/semi/btitlesearch?page=<%= p %>&search=<%= search %>" id="page_num"><%= p %></a></li>
 				<% }} %>
 				<% if((currentPage + 10) > endPage && (currentPage + 10) < maxPage) { %>
-					<li class="page-item"><a class="page-link" href="/semi/blist?page=<%= endPage + 10 %>" aria-label="Next" id="page_num">
+					<li class="page-item"><a class="page-link" href="/semi/btitlesearch?page=<%= endPage + 10 %>&search=<%= search %>" aria-label="Next" id="page_num">
 						<span aria-hidden="true">&raquo;</span>
 						<span class="sr-only">Next</span></a>
 					</li>
@@ -99,7 +100,7 @@
 				<% if(currentPage >= maxPage){ %>
 					<li class="page-item"><a class="page-link" href="#" id="page_num">&nbsp;끝&nbsp;</a></li>
 				<% } else { %>
-					<li class="page-item"><a class="page-link" href="/semi/blist?page=<%= maxPage %>" id="page_num">&nbsp;끝&nbsp;</a></li>
+					<li class="page-item"><a class="page-link" href="/semi/btitlesearch?page=<%= maxPage %>&search=<%= search %>" id="page_num">&nbsp;끝&nbsp;</a></li>
 				<% } %>
 				</ul>
 			</div>
