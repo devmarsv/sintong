@@ -25,6 +25,13 @@
 					</tr>
 				</thead>
 				<tbody>
+					<% if(list.size() == 0) { %>
+					<tr>
+						<td colspan=3>
+							적립금 내역이 없습니다.
+						</td>
+					</tr>
+					<% } else { %>
 					<% for(Point p : list) { %>
 						<tr class="boardlist">
 							<td><%= p.getPointPublish() %></td>
@@ -44,6 +51,7 @@
 								<% } %>
 							</td>
 						</tr>
+					<% } %>
 					<% } %>
 				</tbody>
 			</table>

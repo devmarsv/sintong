@@ -42,16 +42,17 @@ public class PointDao {
 		return totalPoint;
 	}
 
-	public ArrayList<Point> selectList(Connection conn) {
+	public ArrayList<Point> selectList(Connection conn, String userId) {
 		ArrayList<Point> list = new ArrayList<Point>();
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = "select * from point order by point_no desc";
+		String query = "select * from point where mem_userid= ? order by point_no desc;";
 		
 		try {
-			stmt = conn.createStatement();
-			rset = stmt.executeQuery(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				Point p = new Point();
@@ -69,7 +70,7 @@ public class PointDao {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		
 		return list;
