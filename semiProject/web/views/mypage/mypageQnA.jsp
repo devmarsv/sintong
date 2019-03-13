@@ -50,6 +50,11 @@
 						<th>관리</th>
 					</thead>
 					<tbody>
+						<% if(myqnaList.size() == 0) { %>
+						<tr>
+							<td colspan=3 class="noList">작성한 QnA가 없습니다.</td>
+						</tr>
+						<% } else { %>
 						<% for(MyQna myqna : myqnaList){ %>
 						<tr>
 							<input type="hidden" value="<%= myqna.getmQnaNo() %>" />
@@ -94,6 +99,7 @@
 							 	<p><button name="delno" data-value="<%= myqna.getQnaQid() %>" value="<%= myqna.getmQnaNo() %>" class="btDelete">삭제</button></p>
 							 </td>
 						</tr>
+						<% } %>
 						<% } %>
 					</tbody>
 				</table>

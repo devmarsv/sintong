@@ -55,7 +55,7 @@ public class MyQnaServlet extends HttpServlet {
 		
 		response.setContentType("text/html; charset=utf-8");
 		RequestDispatcher view = null;
-		if(myqnaList.size() > 0) {
+		if(myqnaList.size() >= 0) {
 			view = request.getRequestDispatcher("views/mypage/mypageQnA.jsp");
 			request.setAttribute("myqnaList", myqnaList);
 			request.setAttribute("currentPage", currentPage);
