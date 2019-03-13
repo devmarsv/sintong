@@ -1,4 +1,4 @@
-INSERT INTO FAQ 
+﻿INSERT INTO FAQ 
 VALUES ('F'||SEQ_FAQNO.NEXTVAL, '자주 묻는 질문', DEFAULT, '자주 묻는 질문입니다.', '저희 사이트를 이용해 주셔서 감사합니다.', 
 DEFAULT, 'admin');
 
