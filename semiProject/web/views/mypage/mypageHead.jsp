@@ -1,78 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR" import="member.model.vo.Member"%>
-<%
-	Member loginMember = (Member)session.getAttribute("loginMember");
-%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>½ÅÅë½ÃÀå</title>
-		<%-- favicon --%>
-		<link href="/semi/resources/images/favicon.png" rel="icon">
-		<%-- //favicon --%>
-		
-		<%-- css --%>
-		<link rel="stylesheet" href="/semi/vendor/bootstrap/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<link rel="stylesheet" href="/semi/resources/css/common.css" />
-		<link rel="stylesheet" href="/semi/resources/css/mypage.css" />
-		<%-- //css --%>
-		
-		<%-- script --%>
-		<script type="text/javascript" src="/semi/resources/js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="/semi/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<%-- //script --%>
-	</head>
 	<body>
-		<!-- Navigation -->
-		<header class="myHeader">
-			<div class="t_nav">
-				<ul>
-					<!-- ·Î±×ÀÎ Àü -->
-					<% if(loginMember == null) { %>
-					<li><a href="/semi/views/member/login.jsp">·Î±×ÀÎ</a></li>
-					<li><a href="/semi/views/member/register.jsp">È¸¿ø°¡ÀÔ</a></li>
-					<li><a href="#;">Àå¹Ù±¸´Ï</a></li>
-					<li><a href="/semi/views/member/login.jsp">¸¶ÀÌÆäÀÌÁö</a></li>
-					<!-- ·Î±×ÀÎ Àü -->
-					<% } else { %>
-					<!-- ·Î±×ÀÎ ÈÄ -->
-					<li><a href="/semi">È¨</a></li>
-					<li><span class="user"><%= loginMember.getMemName() %></span>´Ô ¾È³çÇÏ¼¼¿ä!</li>
-					<li><a href="/semi/logout">·Î±×¾Æ¿ô</a></li>
-					<li><a href="#;">Àå¹Ù±¸´Ï</a></li>
-					<li><a href="/semi/myinfo?mem_userid=<%= loginMember.getMemUserid() %>">¸¶ÀÌÆäÀÌÁö</a></li>
-					<!-- ·Î±×ÀÎ ÈÄ -->
-					<% } %>
+		<header id="mypage_title">
+			<h1><a href="mypage_main.html">ë§ˆì´íŽ˜ì´ì§€</a></h1>
+		</header>
+	
+		<br>
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" id="mypage_nav">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" href="mypageMain.jsp" id="nav_list">ë‚´ì •ë³´</a></li>
+					<li class="nav-item"><a class="nav-link" href="mypageUpdateInfo.jsp" id="nav_list">ê°œì¸ì •ë³´ìˆ˜ì •</a></li>
+					<li class="nav-item"><a class="nav-link" href="mypageCoupon.jsp" id="nav_list">ì¿ í°/ì ë¦½ê¸ˆ</a></li>
+					<li class="nav-item"><a class="nav-link" href="mypageOrderDelivery.jsp" id="nav_list">ì£¼ë¬¸/ë°°ì†¡ì¡°íšŒ</a></li>
+					<li class="nav-item"><a class="nav-link" href="mypageQnA.jsp" id="nav_list">ë‚´ê°€ ì“´ QnA</a></li>
+					<li class="nav-item"><a class="nav-link" href="mypageReview.jsp" id="nav_list">ë‚´ê°€ ì“´ í›„ê¸°</a></li>
 				</ul>
 			</div>
-			
-			<div class="mypageTop">
-				<div class="topCon">
-					<h2>¸¶ÀÌÆäÀÌÁö</h2>
-				</div>
-			</div>
-		</header>
-		<div class="myContent">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light" id="mypage_nav">
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active"><a class="nav-link" href="/semi/myinfo?mem_userid=<%= loginMember.getMemUserid() %>" id="nav_list">³»Á¤º¸</a></li>
-						<li class="nav-item"><a class="nav-link" href="/semi/views/mypage/mypageUpdateInfo.jsp" id="nav_list">°³ÀÎÁ¤º¸¼öÁ¤</a></li>
-						<li class="nav-item"><a class="nav-link" href="/semi/pointlist?mem_userid=<%= loginMember.getMemUserid() %>" id="nav_list">Àû¸³±Ý</a></li>
-						<li class="nav-item"><a class="nav-link" href="/semi/couponlist?mem_userid=<%= loginMember.getMemUserid() %>" id="nav_list">ÄíÆù</a></li>
-						<%-- <li class="nav-item"><a class="nav-link" href="/semi/orderlist?mem_userid=<%= loginMember.getMemUserid() %>" id="nav_list">ÁÖ¹®/¹è¼ÛÁ¶È¸</a></li> --%>
-						<li class="nav-item"><a class="nav-link" href="/semi/myqna?mem_userid=<%= loginMember.getMemUserid() %>&page=1" id="nav_list">³»°¡ ¾´ QnA</a></li>
-						<li class="nav-item"><a class="nav-link" href="/semi/mypreview?mem_userid=<%= loginMember.getMemUserid() %>&page=1" id="nav_list">³»°¡ ¾´ ÈÄ±â</a></li>
-					</ul>
-				</div>
-			</nav>
+		</nav>
 	</body>
 </html>
-
-
-
-
-
-

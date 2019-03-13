@@ -6,157 +6,157 @@ import java.sql.Date;
 public class Member implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private String memUserid;
-	private String memPasswd;
-	private String memName;
-	private Date memBirth;
-	private String memGender;
-	private String memTel;
-	private String memEmail;
-	private String memAddr1;
-	private String memAddr2;
-	private Date memEnrolldate;
-	private int memPoint;
-	private int memCoupon;
-	private String grade;
+	private String userId;
+	private String userPwd;
+	private String userName;
+	private String gender;
+	private int age;
+	private String phone;
+	private String email;
+	private String hobby;
+	private String etc;
+	private Date enrollDate;
+	private Date lastModified;
 	
 	public Member() {}
 
-	public Member(String memUserid, String memPasswd, String memName, Date memBirth, String memGender,
-			String memPhone, String memEmail, String memAddr1, String memAddr2, Date memEnrolldate, int memPoint,
-			int memCoupon, String gradeCode) {
+	public Member(String userId, String userPwd, String userName, String gender, int age, String phone, String email,
+			String hobby, String etc, Date enrollDate, Date lastModified) {
 		super();
-		this.memUserid = memUserid;
-		this.memPasswd = memPasswd;
-		this.memName = memName;
-		this.memBirth = memBirth;
-		this.memGender = memGender;
-		this.memTel = memTel;
-		this.memEmail = memEmail;
-		this.memAddr1 = memAddr1;
-		this.memAddr2 = memAddr2;
-		this.memEnrolldate = memEnrolldate;
-		this.memPoint = memPoint;
-		this.memCoupon = memCoupon;
-		this.grade = grade;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.gender = gender;
+		this.age = age;
+		this.phone = phone;
+		this.email = email;
+		this.hobby = hobby;
+		this.etc = etc;
+		this.enrollDate = enrollDate;
+		this.lastModified = lastModified;
 	}
 
-	public String getMemUserid() {
-		return memUserid;
+	public Member(String userId, String userPwd, String userName, String gender, int age, String phone, String email,
+			String hobby, String etc) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.gender = gender;
+		this.age = age;
+		this.phone = phone;
+		this.email = email;
+		this.hobby = hobby;
+		this.etc = etc;
 	}
 
-	public void setMemUserid(String memUserid) {
-		this.memUserid = memUserid;
+	public String getUserId() {
+		return userId;
 	}
 
-	public String getMemPasswd() {
-		return memPasswd;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public void setMemPasswd(String memPasswd) {
-		this.memPasswd = memPasswd;
+	public String getUserPwd() {
+		return userPwd;
 	}
 
-	public String getMemName() {
-		return memName;
+	public void setUserPwd(String userPwd) {
+		this.userPwd = userPwd;
 	}
 
-	public void setMemName(String memName) {
-		this.memName = memName;
+	public String getUserName() {
+		return userName;
 	}
 
-	public Date getMemBirth() {
-		return memBirth;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public void setMemBirth(Date memBirth) {
-		this.memBirth = memBirth;
+	public String getGender() {
+		return gender;
 	}
 
-	public String getMemGender() {
-		return memGender;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
-	public void setMemGender(String memGender) {
-		this.memGender = memGender;
+	public int getAge() {
+		return age;
 	}
 
-	public String getMemTel() {
-		return memTel;
+	public void setAge(int age) {
+		this.age = age;
 	}
 
-	public void setMemTel(String memTel) {
-		this.memTel = memTel;
+	public String getPhone() {
+		return phone;
 	}
 
-	public String getMemEmail() {
-		return memEmail;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public void setMemEmail(String memEmail) {
-		this.memEmail = memEmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public String getMemAddr1() {
-		return memAddr1;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public void setMemAddr1(String memAddr1) {
-		this.memAddr1 = memAddr1;
+	public String getHobby() {
+		return hobby;
 	}
 
-	public String getMemAddr2() {
-		return memAddr2;
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
 	}
 
-	public void setMemAddr2(String memAddr2) {
-		this.memAddr2 = memAddr2;
+	public String getEtc() {
+		return etc;
 	}
 
-	public Date getMemEnrolldate() {
-		return memEnrolldate;
+	public void setEtc(String etc) {
+		this.etc = etc;
 	}
 
-	public void setMemEnrolldate(Date memEnrolldate) {
-		this.memEnrolldate = memEnrolldate;
+	public Date getEnrollDate() {
+		return enrollDate;
 	}
 
-	public int getMemPoint() {
-		return memPoint;
+	public void setEnrollDate(Date enrollDate) {
+		this.enrollDate = enrollDate;
 	}
 
-	public void setMemPoint(int memPoint) {
-		this.memPoint = memPoint;
+	public Date getLastModified() {
+		return lastModified;
 	}
 
-	public int getMemCoupon() {
-		return memCoupon;
-	}
-
-	public void setMemCoupon(int memCoupon) {
-		this.memCoupon = memCoupon;
-	}
-
-	public String getGrade() {
-		return grade;
-	}
-
-	public void setGrade(String grade) {
-		this.grade = grade;
+	public void setLastModified(Date lastModified) {
+		this.lastModified = lastModified;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
+	
 	@Override
 	public String toString() {
-		return this.memUserid + ", "
-			+ this.memPasswd + ", " + this.memName + ", "
-			+ this.memBirth + ", " + this.memGender + ", "
-			+ this.memTel + ", " + this.memEmail + ", "
-			+ this.memAddr1 + ", " + this.memAddr2 + ", "
-			+ this.memEnrolldate + ", " + this.memPoint + ", " + this.memCoupon + ", "
-			+ this.grade;
+		return this.userId + ", " + this.userPwd + ", "
+			+ this.userName + ", " + this.age + ", "
+			+ this.gender + ", " + this.phone + ", "
+			+ this.email + ", " + this.hobby + ", "
+			+ this.etc + ", " + this.enrollDate + ", "
+			+ this.lastModified;
 	}	
 }
+
+
+
+
+
+
+
+

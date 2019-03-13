@@ -62,32 +62,3 @@
 }
 @media only screen and (max-width:359px){.product-grid3 .rating{margin:0}
 }
-
-
-
-
-/**-- product view --**/
-.pvContainer{width:1000px !important;}
-.viewTop{padding:30px 0;}
-.viewTop .title{font-size:24px;font-weight:bold;}
-.viewTop .comment{font-size:14px;color:#777;margin-bottom:30px;}
-.viewTop .prodTable{border-top:1px solid #eee;border-bottom:1px solid #eee;}
-.viewTop .prodTable th{border-top:none !important;font-size:13px;width:160px;}
-.viewTop .prodTable td{border-top:none !important;font-size:13px;}
-.viewTop .optTable th,
-.viewTop .optTable td{vertical-align:middle !important;}
-.viewTop .optTable td select,
-.viewTop .optTable td option{font-size:13px;}
-.viewTop .btnGroup{padding:20px 0;}
-.viewTop .btnGroup .btn{width:100%;font-size:16px;}
-
-
-
-
-
-
-
-
-
-
-

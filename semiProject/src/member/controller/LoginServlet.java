@@ -29,35 +29,58 @@ public class LoginServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// �α��� ó�� 
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=utf-8");
-		
-		String memUserid = request.getParameter("userid");
-		String memPasswd = request.getParameter("userpwd");
-		
-		Member loginMember = new MemberService().loginCheck(memUserid, memPasswd);
-		
-		if(loginMember != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("loginMember", loginMember);
-			response.sendRedirect("/semi");
-		} else {
-			RequestDispatcher view = request.getRequestDispatcher("views/member/memberError.jsp");
-			request.setAttribute("message", "�α��� ����!");
-			view.forward(request, response);
-		}
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// 로그인 처리용 컨트롤러
+		//1. 전송값에 한글이 있다면, 인코딩처리함
+		request.setCharacterEncoding("utf-8");
+		//결과 뷰파일 내보낼 때를 위해 미리 셋팅해 둠
+		response.setContentType("text/html; charset=utf-8");
+		
+		//2. 전송온 값 꺼내서 변수 또는 객체에 저장 처리
+		String userId = request.getParameter("userid");
+		String userPwd = request.getParameter("userpwd");
+		
+		
+		//3. 모델쪽으로 전송온 값 전달하면서, 처리된 결과받음
+		//controller --> service --> dao
+		Member loginMember = new MemberService().loginCheck(userId, userPwd);
+		
+		//4. 받은 결과를 가지고 뷰를 선택해서 내보냄
+		if(loginMember != null) {
+			//로그인 성공시
+			HttpSession session = request.getSession();
+			//System.out.println("sessionID : " + session.getId());
+			session.setAttribute("loginMember", loginMember);
+			//session.setMaxInactiveInterval(10*60);
+			response.sendRedirect("/semi/index.jsp");
+			
+			/*if(userId.equals("admin")) {
+				response.sendRedirect("/first/adminIndex.jsp");
+			}else {
+				response.sendRedirect("/first/index.jsp");
+			}*/
+		}else {
+			//로그인 실패시
+			//상대경로만 사용할 수 있는 메소드임.
+			RequestDispatcher view = request.getRequestDispatcher(
+					"views/member/memberError.jsp");
+			request.setAttribute("message", 
+				"아이디 또는 비밀번호를 다시 확인하세요.<br>"   
+				+ "신통시장에 등록되지 않은 아이디이거나, <br> 아이디 또는 비밀번호를 잘못 입력하셨습니다.");
+			view.forward(request, response);
+		}
+		
 	}
 
 }
+
+
+
+
+
+
+
+
+

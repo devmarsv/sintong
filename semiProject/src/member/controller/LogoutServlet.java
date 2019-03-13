@@ -28,11 +28,11 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 濡쒓렇�븘�썐 泥섎━�슜 而⑦듃濡ㅻ윭
+		// 로그아웃 처리용 컨트롤러
 		HttpSession session = request.getSession(false);
 		if(session != null) {
 			session.invalidate();
-			response.sendRedirect("/semi");
+			response.sendRedirect("/semi/index.jsp");
 		}
 	}
 

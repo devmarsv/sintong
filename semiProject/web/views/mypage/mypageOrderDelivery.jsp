@@ -3,11 +3,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<%@ include file="/views/mypage/mypageHead.jsp"%>
+		<%@ include file="/views/common/header.jsp"%>
+		<link rel="stylesheet" href="/semi/resources/css/mypage.css" />
 	</head>
 	<body>
-		<div class="container myContainer">
-				<div id="list_name">주문/배달조회</div>
+		<div class="container">
+			<%@ include file="mypageHead.jsp" %>
+			
+				<div id="list_name">주문/배송조회</div>
      
 			    <div>
 			      <table class="table table-striped table-bordered table-hover">
@@ -28,6 +31,13 @@
 			            </tr>
 			        </tbody>
 			      </table>
+			
+			<div class="input-group" id="search_bar">
+			  <input type="text" class="form-control" placeholder="검색 키워드를 입력하세요" id="search_input">
+			  <span class="input-group-btn">
+				<button class="btn btn-secondary" type="button" id="search_button">검색</button>
+			  </span>
+			</div>
 			      
 			 <!-- Paging 처리 -->
 			
