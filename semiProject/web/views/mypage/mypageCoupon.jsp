@@ -16,6 +16,9 @@
 		<h3><%= loginMember.getMemUserid() %> 님의 쿠폰은 <%= list.size() %>장 입니다</h3>
 
 		<div class="couponList">
+			<% if(list.size() == 0) { %>
+				<div class="noList">쿠폰 내역이 없습니다.</div>
+			<% } else { %>
 			<% for(Coupon c : list) { %>
 				<div class="couponBox ">
 					<div class="box">
@@ -41,6 +44,7 @@
 						</div>
 					</div>
 				</div>
+			<% } %>
 			<% } %>
 		</div>
 	</div>

@@ -1,26 +1,27 @@
 package coupon.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import coupon.model.vo.Coupon;
 
-import static common.JDBCTemplate.*;
-
 public class CouponDao {
 
-	public ArrayList<Coupon> selectList(Connection conn) {
+	public ArrayList<Coupon> selectList(Connection conn, String userId) {
 		ArrayList<Coupon> list = new ArrayList<Coupon>();
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = "select * from coupon order by coupon_no desc";
+		String query = "select * from coupon where mem_userid = ? order by coupon_no desc";
 		
 		try {
-			stmt = conn.createStatement();
-			rset = stmt.executeQuery(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				Coupon p = new Coupon();
@@ -40,7 +41,7 @@ public class CouponDao {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		
 		return list;
