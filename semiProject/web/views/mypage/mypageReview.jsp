@@ -39,6 +39,11 @@
 						<th>후기내용</th>
 					</thead>
 					<tbody>
+						<% if(mypList.size() == 0) { %>
+						<tr>
+							<td colspan=3>작성된 후기가 없습니다.</td>
+						</tr>
+						<% } else { %>
 						<% for(MyPdReview mypr : mypList){ %>
 						<tr>
 							 <td width="30%">
@@ -61,6 +66,7 @@
 							 	</div>
 							 </td>
 						</tr>
+						<% } %>
 						<% } %>
 					</tbody>
 				</table>
