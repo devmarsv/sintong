@@ -1,9 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="EUC-KR" import="member.model.vo.Member"%>
+<%
+	Member loginMember = (Member)session.getAttribute("loginMember");
+%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>ì‹ í†µì‹œìž¥</title>
+		<title>½ÅÅë½ÃÀå</title>
 		<%-- favicon --%>
 		<link href="/semi/resources/images/favicon.png" rel="icon">
 		<%-- //favicon --%>
@@ -24,23 +28,25 @@
 		<header>
 			<div class="t_nav">
 				<ul>
-					<!-- ë¡œê·¸ì¸ ì „ -->
-					<li><a href="/semi/views/member/login.jsp">ë¡œê·¸ì¸</a></li>
-					<li><a href="/semi/views/member/register.jsp">íšŒì›ê°€ìž…</a></li>
-					<li><a href="#;">ìž¥ë°”êµ¬ë‹ˆ</a></li>
-					<li><a href="#;">ë§ˆì´íŽ˜ì´ì§€</a></li>
-					<!-- ë¡œê·¸ì¸ ì „ -->
-
-					<!-- ë¡œê·¸ì¸ í›„ -->
-					<!-- <li><span class="user">USER1</span>ë‹˜ ì•ˆë…•í•˜ì„¸ìš”!</li>
-					<li><a href="#;">ë¡œê·¸ì•„ì›ƒ</a></li>
-					<li><a href="#;">ìž¥ë°”êµ¬ë‹ˆ</a></li>
-					<li><a href="#;">ë§ˆì´íŽ˜ì´ì§€</a></li> -->
-					<!-- ë¡œê·¸ì¸ í›„ -->
+					<!-- ·Î±×ÀÎ Àü -->
+					<% if(loginMember == null) { %>
+					<li><a href="/semi/views/member/login.jsp">·Î±×ÀÎ</a></li>
+					<li><a href="/semi/views/member/register.jsp">È¸¿ø°¡ÀÔ</a></li>
+					<li><a href="#;">Àå¹Ù±¸´Ï</a></li>
+					<li><a href="/semi/views/member/login.jsp">¸¶ÀÌÆäÀÌÁö</a></li>
+					<!-- ·Î±×ÀÎ Àü -->
+					<% } else { %>
+					<!-- ·Î±×ÀÎ ÈÄ -->
+					<li><span class="user"><%= loginMember.getMemName() %></span>´Ô ¾È³çÇÏ¼¼¿ä!</li>
+					<li><a href="/semi/logout">·Î±×¾Æ¿ô</a></li>
+					<li><a href="#;">Àå¹Ù±¸´Ï</a></li>
+					<li><a href="/semi/myinfo?mem_userid=<%= loginMember.getMemUserid() %>">¸¶ÀÌÆäÀÌÁö</a></li>
+					<!-- ·Î±×ÀÎ ÈÄ -->
+					<% } %>
 				</ul>
 			</div>
 
-			<h1 class="logo"><a href="/semi"><img src="/semi/resources/images/logo.png" alt="ì‹ í†µì‹œìž¥" /></a></h1>
+			<h1 class="logo"><a href="/semi"><img src="/semi/resources/images/logo.png" alt="½ÅÅë½ÃÀå" /></a></h1>
 
 			<nav class="navbar navbar-expand-xs navbar-dark bg-dark">
 				<div class="container">
@@ -48,60 +54,60 @@
 						<ul class="nav">
 							<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							  ì „ì²´ ì¹´í…Œê³ ë¦¬
+							  ÀüÃ¼ Ä«Å×°í¸®
 							</a>
 							<div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownPortfolio">
 								<ul class="gnb-menu">
 									<li>
-										<a href="/semi/views/product/productList.jsp" class="menu">ì±„ì†Œ</a>
+										<a href="/semi/views/product/productList.jsp" class="menu">Ã¤¼Ò</a>
 										<ul class="sub-menu">
-											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">ê¸°ë³¸ì±„ì†Œ</a></li>
-											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">ìŒˆÂ·ìƒëŸ¬ë“œÂ·ê°„íŽ¸ì±„ì†Œ</a></li>
-											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">ë¸Œë¡œì½œë¦¬Â·íŠ¹ìˆ˜ì±„ì†Œ</a></li>
-											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">ì½©ë‚˜ë¬¼Â·ë²„ì„¯ë¥˜</a></li>
-											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">ì–‘íŒŒÂ·ë§ˆëŠ˜Â·ìƒê°•Â·íŒŒ</a></li>
-											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">ì‹œê¸ˆì¹˜Â·ë¶€ì¶”Â·ë‚˜ë¬¼</a></li>
-											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">íŒŒí”„ë¦¬ì¹´Â·í”¼ë§Â·ê³ ì¶”</a></li>
+											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">±âº»Ã¤¼Ò</a></li>
+											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">½Ó¡¤»ø·¯µå¡¤°£ÆíÃ¤¼Ò</a></li>
+											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">ºê·ÎÄÝ¸®¡¤Æ¯¼öÃ¤¼Ò</a></li>
+											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">Äá³ª¹°¡¤¹ö¼¸·ù</a></li>
+											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">¾çÆÄ¡¤¸¶´Ã¡¤»ý°­¡¤ÆÄ</a></li>
+											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">½Ã±ÝÄ¡¡¤ºÎÃß¡¤³ª¹°</a></li>
+											<li><a href="/semi/views/product/productList.jsp" class="sub dropdown-item">ÆÄÇÁ¸®Ä«¡¤ÇÇ¸Á¡¤°íÃß</a></li>
 										</ul>
 									</li>
 									<li>
-										<a href="/semi/views/product/productList.jsp" class="menu">ê³¼ì¼Â·ê²¬ê³¼Â·ìŒ€</a>
+										<a href="/semi/views/product/productList.jsp" class="menu">°úÀÏ¡¤°ß°ú¡¤½Ò</a>
 										<ul class="sub-menu">
-											<li><a href="#;" class="sub dropdown-item">êµ­ì‚°ê³¼ì¼</a></li>
-											<li><a href="#;" class="sub dropdown-item">ìˆ˜ìž…ê³¼ì¼</a></li>
-											<li><a href="#;" class="sub dropdown-item">ëƒ‰ë™Â·ê±´ê³¼ì¼</a></li>
-											<li><a href="#;" class="sub dropdown-item">ê²¬ê³¼ë¥˜</a></li>
-											<li><a href="#;" class="sub dropdown-item">ìŒ€Â·ìž¡ê³¡</a></li>
+											<li><a href="#;" class="sub dropdown-item">±¹»ê°úÀÏ</a></li>
+											<li><a href="#;" class="sub dropdown-item">¼öÀÔ°úÀÏ</a></li>
+											<li><a href="#;" class="sub dropdown-item">³Ãµ¿¡¤°Ç°úÀÏ</a></li>
+											<li><a href="#;" class="sub dropdown-item">°ß°ú·ù</a></li>
+											<li><a href="#;" class="sub dropdown-item">½Ò¡¤Àâ°î</a></li>
 										</ul>
 									</li>
 									<li>
-										<a href="/semi/views/product/productList.jsp" class="menu">ìˆ˜ì‚°Â·í•´ì‚°Â·ê±´ì–´ë¬¼</a>
+										<a href="/semi/views/product/productList.jsp" class="menu">¼ö»ê¡¤ÇØ»ê¡¤°Ç¾î¹°</a>
 										<ul class="sub-menu">
-											<li><a href="#;" class="sub dropdown-item">ìƒì„ ë¥˜</a></li>
-											<li><a href="#;" class="sub dropdown-item">ìƒˆìš°Â·ê²ŒÂ·ëžìŠ¤í„°</a></li>
-											<li><a href="#;" class="sub dropdown-item">ì˜¤ì§•ì–´Â·ë‚™ì§€Â·ë¬¸ì–´</a></li>
-											<li><a href="#;" class="sub dropdown-item">í•´ì‚°ë¬¼Â·ì¡°ê°œë¥˜</a></li>
-											<li><a href="#;" class="sub dropdown-item">ìˆ˜ì‚°ê°€ê³µí’ˆ</a></li>
-											<li><a href="#;" class="sub dropdown-item">ê¹€Â·ë¯¸ì—­Â·í•´ì¡°ë¥˜</a></li>
+											<li><a href="#;" class="sub dropdown-item">»ý¼±·ù</a></li>
+											<li><a href="#;" class="sub dropdown-item">»õ¿ì¡¤°Ô¡¤¶ø½ºÅÍ</a></li>
+											<li><a href="#;" class="sub dropdown-item">¿ÀÂ¡¾î¡¤³«Áö¡¤¹®¾î</a></li>
+											<li><a href="#;" class="sub dropdown-item">ÇØ»ê¹°¡¤Á¶°³·ù</a></li>
+											<li><a href="#;" class="sub dropdown-item">¼ö»ê°¡°øÇ°</a></li>
+											<li><a href="#;" class="sub dropdown-item">±è¡¤¹Ì¿ª¡¤ÇØÁ¶·ù</a></li>
 										</ul>
 									</li>
 									<li>
-										<a href="/semi/views/product/productList.jsp" class="menu">ì •ìœ¡Â·ê³„ëž€</a>
+										<a href="/semi/views/product/productList.jsp" class="menu">Á¤À°¡¤°è¶õ</a>
 										<ul class="sub-menu">
-											<li><a href="#;" class="sub dropdown-item">ì†Œê³ ê¸°</a></li>
-											<li><a href="#;" class="sub dropdown-item">ë¼ì§€ê³ ê¸°</a></li>
-											<li><a href="#;" class="sub dropdown-item">ê³„ëž€ë¥˜</a></li>
-											<li><a href="#;" class="sub dropdown-item">ë‹­Â·ì˜¤ë¦¬ê³ ê¸°</a></li>
-											<li><a href="#;" class="sub dropdown-item">ì–‘ë…ìœ¡Â·ëˆê¹ŒìŠ¤</a></li>
+											<li><a href="#;" class="sub dropdown-item">¼Ò°í±â</a></li>
+											<li><a href="#;" class="sub dropdown-item">µÅÁö°í±â</a></li>
+											<li><a href="#;" class="sub dropdown-item">°è¶õ·ù</a></li>
+											<li><a href="#;" class="sub dropdown-item">´ß¡¤¿À¸®°í±â</a></li>
+											<li><a href="#;" class="sub dropdown-item">¾ç³äÀ°¡¤µ·±î½º</a></li>
 										</ul>
 									</li>
 								</ul>
 							</div>
 						  </li>
-						  <li class="nav-item"><a class="nav-link" href="/semi/views/product/timeProductList.jsp">ë°˜ì§ë–¨ì´</a></li>
-						  <li class="nav-item"><a class="nav-link" href="/semi/views/product/bestProductList.jsp">ë² ìŠ¤íŠ¸</a></li>
-						  <li class="nav-item"><a class="nav-link" href="#;">ì£¼ì°¨ í˜„í™©</a></li>
-						  <li class="nav-item"><a class="nav-link" href="/semi/blist">ê³ ê° ì„¼í„°</a></li>
+						  <li class="nav-item"><a class="nav-link" href="/semi/views/product/timeProductList.jsp">¹ÝÂ¦¶³ÀÌ</a></li>
+						  <li class="nav-item"><a class="nav-link" href="/semi/views/product/bestProductList.jsp">º£½ºÆ®</a></li>
+						  <li class="nav-item"><a class="nav-link" href="#;">ÁÖÂ÷ ÇöÈ²</a></li>
+						  <li class="nav-item"><a class="nav-link" href="#;">°í°´ ¼¾ÅÍ</a></li>
 						</ul>
 					</div>
 				</div>
