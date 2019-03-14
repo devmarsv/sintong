@@ -13,16 +13,16 @@ import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
- * Servlet implementation class MyInfoServlet
+ * Servlet implementation class MyInfoConfirmServlet
  */
-@WebServlet("/myinfo")
-public class MyInfoServlet extends HttpServlet {
+@WebServlet("/pwconfirm")
+public class MyInfoConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyInfoServlet() {
+    public MyInfoConfirmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,29 +31,24 @@ public class MyInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 내 정보 보기 처리용 컨트롤러
+		// 비밀번호 확인
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		String memUserId = request.getParameter("mem_userid");
+		String userId = request.getParameter("userid");
+		String userPw = request.getParameter("userpw");
 		
-		MemberService mservice = new MemberService();
-		Member member = mservice.selectMember(memUserId);
-		int totalPoint = mservice.getTotalPoint(memUserId);
-		int totalCoupon = mservice.getTotalCoupon(memUserId);
+		int chkPw = new MemberService().passwdCheck(userId, userPw);
 		
 		RequestDispatcher view = null;
-		if(member != null) {
-			view = request.getRequestDispatcher("views/mypage/mypageMain.jsp");
-			request.setAttribute("member", member);
-			request.setAttribute("totalpoint", totalPoint);
-			request.setAttribute("totalcoupon", totalCoupon);
-			view.forward(request, response);
+		if(chkPw > 0) {
+			response.sendRedirect("views/mypage/mypageUpdateInfo.jsp");
 		} else {
-			view = request.getRequestDispatcher("views/mypage/mypageError.jsp");
-			request.setAttribute("message", memUserId + "에 해당하는 회원 정보 조회 실패!");
+			view = request.getRequestDispatcher("views/mypage/mypageMyInfoConfirm.jsp");
+			request.setAttribute("message", "비밀번호가 정확하지 않습니다!");
 			view.forward(request, response);
 		}
+		
 	}
 
 	/**
