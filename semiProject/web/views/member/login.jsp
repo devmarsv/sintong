@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<% if(loginMember != null && loginMember.getUserId().equals("admin")){ %>
+<% if(loginMember != null && loginMember.getMem_userid().equals("admin")){ %>
 	<%@ include file="/views/admin/adminHeader.jsp" %> <!-- 절대경로 -->
 <% } %>
 
@@ -28,8 +28,8 @@
 				<!--로그인 폼-->
 				<h1 class="h3 mb-3 font-weight-bold" style="text-align: center;"> 로그인</h1>
 
-				<input type="text" id="userid" name="userid" class="form-control" placeholder="아이디 입력" required="" autofocus=""> 
-				<input type="password" id="userpwd" name="userpwd" class="form-control" placeholder="비밀번호 입력" required="">
+				<input type="text" id="userid" name="mem_userid" class="form-control" placeholder="아이디 입력" required="" autofocus=""> 
+				<input type="password" id="userpwd" name="mem_passwd" class="form-control" placeholder="비밀번호 입력" required="">
 
 				<button class="btn btn-success btn-block" type="submit">
 					<i class="fas fa-sign-in-alt"></i> 로그인
@@ -52,10 +52,10 @@
 		<%-- 로그인한 상태일 때 보여지는 부분 --%>
 		<table width="200" cellpadding="0" cellspacing="5" border="0">
 			<tr>
-				<td><%=loginMember.getUserName()%>님</td>
+				<td><%=loginMember.getMem_name()%>님</td>
 				<%-- 쿼리스트링(query string)
                 서블릿매핑이름?이름=값&이름=값 --%>
-				<td><a href="/semi/myinfo?userid=<%=loginMember.getUserId()%>">내
+				<td><a href="/semi/myinfo?mem_userid=<%=loginMember.getMem_userid()%>">내
 						정보 보기</a></td>
 			</tr>
 			<tr>

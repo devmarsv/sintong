@@ -1,6 +1,7 @@
 package member.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,22 +37,16 @@ public class RegisterServlet extends HttpServlet {
 		
 		//2.
 		Member member = new Member();
-		member.setUserId(request.getParameter("userid"));
-		member.setUserName(request.getParameter("username"));
-		member.setUserPwd(request.getParameter("userpwd"));
-		member.setAge(Integer.parseInt(
-				request.getParameter("age").trim()));
-		member.setGender(request.getParameter("gender"));
-		member.setEmail(request.getParameter("email"));
-		member.setPhone(request.getParameter("phone"));
-		member.setEtc(request.getParameter("etc"));	
+		member.setMem_userid(request.getParameter("mem_userid"));
+		member.setMem_name(request.getParameter("mem_name"));
+		member.setMem_passwd(request.getParameter("mem_passwd"));
+		member.setMem_birth(Date.valueOf(request.getParameter("mem_birth")));
+		member.setMem_gender(request.getParameter("mem_gender"));
+		member.setMem_tel(request.getParameter("mem_tel"));
+		member.setMem_email(request.getParameter("mem_email"));
+		member.setMem_addr1(request.getParameter("mem_addr1"));
+		member.setMem_addr2(request.getParameter("mem_addr2"));
 		
-		String[] hobbies = request.getParameterValues("hobby");
-		if(hobbies != null) {
-			member.setHobby(String.join(",", hobbies));
-		}
-		
-		System.out.println("확인");
 		//3.
 		int result = new MemberService().insertMember(member);
 		

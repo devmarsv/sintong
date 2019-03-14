@@ -20,8 +20,7 @@
 			<div class="col-sm-12">
 				<div class="row">
 					<div class="col-sm-6">
-						<input type="text" id="userId" name="userid" class="form-control"
-							placeholder="* 아이디는 6~12 글자" required="" autofocus="">
+						<input type="text" id="userID" name="mem_userid" class="form-control" placeholder="* 아이디는 6~12 글자" required="" autofocus="">
 					</div>
 					&nbsp;&nbsp;
 					<div class="col-sm-2">
@@ -32,67 +31,30 @@
 					</div>
 				</div>
 				
-				<input type="text" id="userName" name="username"
-					class="form-control" placeholder="* 이 름" required="" autofocus="">
-				<input type="password" id="userPwd" name="userpwd"
-					class="form-control" placeholder="* 비밀번호" required autofocus="">
-				<input type="password" id="userPwd2" name="userpwd2"
-					class="form-control" placeholder="* 비밀번호 확인" required autofocus="">
+				<input type="password" id="userPwd" name="mem_passwd" class="form-control" placeholder="* 비밀번호" required autofocus="">
+				<input type="password" id="userPwd2" name="mem_passwd2" class="form-control" placeholder="* 비밀번호 확인" required autofocus="">
+				<input type="text" id="userName" name="mem_name" class="form-control" placeholder="* 이 름" required="" autofocus="">
+				<input type="date" id="userBirth" name="mem_birth" class="form-control" placeholder="* 생 일" required="" autofocus="">
 				<div class="col-sm-12">
 					<div class="row">
 						<div class="col-xs-4 ">
-							<label name="gender" class="gender">* 성 별 :</label>
+							<label name="mem_gender" class="gender">* 성 별 :</label>
 						</div>
 						&nbsp; &nbsp;
 						<div class="col-xs-4 male">
-							<input type="radio" name="gender" value="M" required>남</input>
+							<input type="radio" name="mem_gender" value="M" required>남</input>
 						</div>
 						&nbsp; &nbsp;
 						<div class="col-xs-4 female">
-							<input type="radio" name="gender" value="F" required>여</input>
+							<input type="radio" name="mem_gender" value="F" required>여</input>
 						</div>
 					</div>
 				</div>
-				<input type="number" id="age" name="age" class="form-control"
-					placeholder="* 나이" min="19" max="" autofocus=""> <input
-					type="phone" id="phone" name="phone" class="form-control"
-					placeholder="* 핸드폰" required autofocus=""> <input
-					type="email" id="email" name="email" class="form-control"
-					placeholder="* 이메일 주소" required autofocus="">
-				<tr height="20">
-					<th bgcolor="orange">취 미</th>
-					<td>
-						<table>
-							<tr>
-								<td width="150"><input type="checkbox" name="hobby"
-									value="game"> 게임</td>
-								<td width="150"><input type="checkbox" name="hobby"
-									value="reading"> 책읽기</td>
-								<td width="150"><input type="checkbox" name="hobby"
-									value="music"> 음악듣기</td>
-							</tr>
-							<tr>
-								<td width="150"><input type="checkbox" name="hobby"
-									value="climb"> 등산</td>
-								<td width="150"><input type="checkbox" name="hobby"
-									value="sport"> 운동</td>
-								<td width="150"><input type="checkbox" name="hobby"
-									value="movie"> 영화감상</td>
-							</tr>
-							<tr>
-								<td width="150"><input type="checkbox" name="hobby"
-									value="travel"> 여행하기</td>
-								<td width="150"><input type="checkbox" name="hobby"
-									value="cook"> 요리하기</td>
-								<td width="150"><input type="checkbox" name="hobby"
-									value="etc"> 기타</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<h4>기 타</h4>
-				<textarea name="etc" row="5" cols="50" class="form-control"
-					autofocus=""></textarea>
+				<input type="phone" id="phone" name="mem_tel" class="form-control" placeholder="* 핸드폰" required autofocus=""> 
+				<input type="email" id="email" name="mem_email" class="form-control" placeholder="* 이메일 주소" required autofocus="">
+				<input type="text" id="address" name="mem_addr1" class="form-control" placeholder="* 주 소1" required autofocus="">
+				<input type="text" id="address" name="mem_addr1" class="form-control" placeholder="* 주 소2" autofocus="">
+				
 			</div>
 			<button class="btn btn-primary btn-block" type="submit">
 				<i class="fas fa-user-plus"></i> 등 록

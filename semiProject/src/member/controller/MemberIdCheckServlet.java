@@ -31,9 +31,9 @@ public class MemberIdCheckServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 아이디 중복 체크 검사용 컨트롤러
-		String userId = request.getParameter("userid");
+		String mem_userid = request.getParameter("mem_userid");
 		
-		int result = new MemberService().selectCheckId(userId);
+		int result = new MemberService().selectCheckId(mem_userid);
 		
 		String returnValue = null;
 		if(result == 0)

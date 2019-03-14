@@ -38,11 +38,11 @@ public class MyInfoServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		//2. 전송 온 값 꺼내서 변수 또는 객체에 저장하기
-		String userId = request.getParameter("userid");
+		String mem_userid = request.getParameter("mem_userid");
 		
 		//3. 서비스 모델로 값 전달하고, 처리된 결과 받기
 		Member member = 
-			new MemberService().selectMember(userId);
+			new MemberService().selectMember(mem_userid);
 		
 		//4. 받은 결과를 가지고 성공/실패에 따라 뷰 파일 내보내기
 		RequestDispatcher view = null;
@@ -56,7 +56,7 @@ public class MyInfoServlet extends HttpServlet {
 			view = request.getRequestDispatcher(
 					"views/member/memberError.jsp");
 			request.setAttribute("message", 
-					userId + " 아이디에 대한 조회가 실패하였습니다.");
+					mem_userid + " 아이디에 대한 조회가 실패하였습니다.");
 			view.forward(request, response);
 		}
 	}

@@ -14,14 +14,14 @@
 </head>
 
 <body>
-<% if(loginMember != null && loginMember.getUserId().equals("admin")){ %>
+<% if(loginMember != null && loginMember.getMem_userid().equals("admin")){ %>
 	<%@ include file="/views/admin/adminHeader.jsp" %> <!-- 절대경로 -->
 <% } %>
 	<section>
 		<%-- 로그인하기 전일 때 보여지는 부분 --%>
 		<% if (loginMember == null) { %>
 	<div id="logreg-forms1" >
-		<form class="form-findUserId" action="/semi/register"> <!--회원가입-->
+		<form class="form-findmem_userid" action="/semi/register"> <!--회원가입-->
             <h1 class="h3 mb-3 font-weight-bold " style=" text-align: center"> 회원가입 완료</h1>
             <div>
             	<h3>회원가입이 완료 되었습니다.</h3>
@@ -40,10 +40,10 @@
 		<%-- 로그인한 상태일 때 보여지는 부분 --%>
 		<table width="200" cellpadding="0" cellspacing="5" border="0">
 			<tr>
-				<td><%=loginMember.getUserName()%>님</td>
+				<td><%=loginMember.getMem_name()%>님</td>
 				<%-- 쿼리스트링(query string)
                 서블릿매핑이름?이름=값&이름=값 --%>
-				<td><a href="/semi/myinfo?userid=<%=loginMember.getUserId()%>">내
+				<td><a href="/semi/myinfo?mem_userid=<%=loginMember.getMem_userid()%>">내
 						정보 보기</a></td>
 			</tr>
 			<tr>

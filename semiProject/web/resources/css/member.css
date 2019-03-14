@@ -109,9 +109,9 @@
         
         #logreg-forms-register #checkId{ padding: 10px; width: 150px; height: auto; background-color: blue; color: whitesmoke; font-family: -apple-system; font-size:16px; font-weight:500;}
         
-        #logreg-forms .form-findUserId, #logreg-forms-register .form-signup{ display: none; }
+        #logreg-forms .form-findmem_userid, #logreg-forms-register .form-signup{ display: none; }
         
-        #logreg-forms .form-findUserPwd, #logreg-forms-register .form-signup{ display: none; }
+        #logreg-forms .form-findmem_passwd, #logreg-forms-register .form-signup{ display: none; }
         
         #logreg-forms .form-signup .social-btn{ width:210px; }
         

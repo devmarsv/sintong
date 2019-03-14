@@ -39,13 +39,14 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		//2. 전송온 값 꺼내서 변수 또는 객체에 저장 처리
-		String userId = request.getParameter("userid");
-		String userPwd = request.getParameter("userpwd");
+		String mem_userid = request.getParameter("mem_userid");
+		String mem_passwd = request.getParameter("mem_passwd");
 		
 		
 		//3. 모델쪽으로 전송온 값 전달하면서, 처리된 결과받음
 		//controller --> service --> dao
-		Member loginMember = new MemberService().loginCheck(userId, userPwd);
+		Member loginMember = new MemberService().loginCheck(mem_userid, mem_passwd);
+		
 		
 		//4. 받은 결과를 가지고 뷰를 선택해서 내보냄
 		if(loginMember != null) {
@@ -56,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 			//session.setMaxInactiveInterval(10*60);
 			response.sendRedirect("/semi/index.jsp");
 			
-			/*if(userId.equals("admin")) {
+			/*if(mem_userid.equals("admin")) {
 				response.sendRedirect("/first/adminIndex.jsp");
 			}else {
 				response.sendRedirect("/first/index.jsp");

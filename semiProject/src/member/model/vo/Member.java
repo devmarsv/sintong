@@ -6,153 +6,158 @@ import java.sql.Date;
 public class Member implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private String userId;
-	private String userPwd;
-	private String userName;
-	private String gender;
-	private int age;
-	private String phone;
-	private String email;
-	private String hobby;
-	private String etc;
-	private Date enrollDate;
-	private Date lastModified;
+	private String mem_userid;
+	private String mem_passwd;
+	private String mem_name; 
+	private Date mem_birth;
+	private String mem_gender;
+	private String mem_tel;
+	private String mem_email;
+	private String mem_addr1;
+	private String mem_addr2;
+	private Date mem_enrollDate;
+	private int mem_pointnum;
+	private int mem_couponnum;
+	private String grade;
 	
 	public Member() {}
 
-	public Member(String userId, String userPwd, String userName, String gender, int age, String phone, String email,
-			String hobby, String etc, Date enrollDate, Date lastModified) {
+	public Member(String mem_userid, String mem_passwd, String mem_name, Date mem_birth, String mem_gender,
+			String mem_tel, String mem_email, String mem_addr1, String mem_addr2, Date mem_enrollDate, int mem_pointnum,
+			int mem_couponnum, String grade) {
 		super();
-		this.userId = userId;
-		this.userPwd = userPwd;
-		this.userName = userName;
-		this.gender = gender;
-		this.age = age;
-		this.phone = phone;
-		this.email = email;
-		this.hobby = hobby;
-		this.etc = etc;
-		this.enrollDate = enrollDate;
-		this.lastModified = lastModified;
+		this.mem_userid = mem_userid;
+		this.mem_passwd = mem_passwd;
+		this.mem_name = mem_name;
+		this.mem_birth = mem_birth;
+		this.mem_gender = mem_gender;
+		this.mem_tel = mem_tel;
+		this.mem_email = mem_email;
+		this.mem_addr1 = mem_addr1;
+		this.mem_addr2 = mem_addr2;
+		this.mem_enrollDate = mem_enrollDate;
+		this.mem_pointnum = mem_pointnum;
+		this.mem_couponnum = mem_couponnum;
+		this.grade = grade;
 	}
 
-	public Member(String userId, String userPwd, String userName, String gender, int age, String phone, String email,
-			String hobby, String etc) {
-		super();
-		this.userId = userId;
-		this.userPwd = userPwd;
-		this.userName = userName;
-		this.gender = gender;
-		this.age = age;
-		this.phone = phone;
-		this.email = email;
-		this.hobby = hobby;
-		this.etc = etc;
+	public String getMem_userid() {
+		return mem_userid;
 	}
 
-	public String getUserId() {
-		return userId;
+	public void setMem_userid(String mem_userid) {
+		this.mem_userid = mem_userid;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public String getMem_passwd() {
+		return mem_passwd;
 	}
 
-	public String getUserPwd() {
-		return userPwd;
+	public void setMem_passwd(String mem_passwd) {
+		this.mem_passwd = mem_passwd;
 	}
 
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
+	public String getMem_name() {
+		return mem_name;
 	}
 
-	public String getUserName() {
-		return userName;
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public Date getMem_birth() {
+		return mem_birth;
 	}
 
-	public String getGender() {
-		return gender;
+	public void setMem_birth(Date mem_birth) {
+		this.mem_birth = mem_birth;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public String getMem_gender() {
+		return mem_gender;
 	}
 
-	public int getAge() {
-		return age;
+	public void setMem_gender(String mem_gender) {
+		this.mem_gender = mem_gender;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public String getMem_tel() {
+		return mem_tel;
 	}
 
-	public String getPhone() {
-		return phone;
+	public void setMem_tel(String mem_tel) {
+		this.mem_tel = mem_tel;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public String getMem_email() {
+		return mem_email;
 	}
 
-	public String getEmail() {
-		return email;
+	public void setMem_email(String mem_email) {
+		this.mem_email = mem_email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public String getMem_addr1() {
+		return mem_addr1;
 	}
 
-	public String getHobby() {
-		return hobby;
+	public void setMem_addr1(String mem_addr1) {
+		this.mem_addr1 = mem_addr1;
 	}
 
-	public void setHobby(String hobby) {
-		this.hobby = hobby;
+	public String getMem_addr2() {
+		return mem_addr2;
 	}
 
-	public String getEtc() {
-		return etc;
+	public void setMem_addr2(String mem_addr2) {
+		this.mem_addr2 = mem_addr2;
 	}
 
-	public void setEtc(String etc) {
-		this.etc = etc;
+	public Date getMem_enrollDate() {
+		return mem_enrollDate;
 	}
 
-	public Date getEnrollDate() {
-		return enrollDate;
+	public void setMem_enrollDate(Date mem_enrollDate) {
+		this.mem_enrollDate = mem_enrollDate;
 	}
 
-	public void setEnrollDate(Date enrollDate) {
-		this.enrollDate = enrollDate;
+	public int getMem_pointnum() {
+		return mem_pointnum;
 	}
 
-	public Date getLastModified() {
-		return lastModified;
+	public void setMem_pointnum(int mem_pointnum) {
+		this.mem_pointnum = mem_pointnum;
 	}
 
-	public void setLastModified(Date lastModified) {
-		this.lastModified = lastModified;
+	public int getMem_couponnum() {
+		return mem_couponnum;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void setMem_couponnum(int mem_couponnum) {
+		this.mem_couponnum = mem_couponnum;
 	}
-	
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+
 	@Override
 	public String toString() {
-		return this.userId + ", " + this.userPwd + ", "
-			+ this.userName + ", " + this.age + ", "
-			+ this.gender + ", " + this.phone + ", "
-			+ this.email + ", " + this.hobby + ", "
-			+ this.etc + ", " + this.enrollDate + ", "
-			+ this.lastModified;
-	}	
+		return this.mem_userid + ", " + this.mem_passwd + ", " + 
+				this.mem_name + ", " + this.mem_birth + ", " + 
+				this.mem_gender + ", " + this.mem_tel + ", " + 
+				this.mem_email + ", " + this.mem_addr1 + ", " + 
+				this.mem_addr2+ ", " +this.mem_enrollDate + ", " + 
+				this.mem_pointnum + ", " + this.mem_couponnum + ", " + 
+				this.grade;
+	}
+	
 }
-
 
 
 

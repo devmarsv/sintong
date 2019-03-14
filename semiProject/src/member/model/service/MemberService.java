@@ -16,25 +16,25 @@ public class MemberService {
 		
 		//로그인 요청 처리용
 		public Member loginCheck(
-				String userId, String userPwd) {
+				String mem_userid, String mem_passwd) {
 			Connection conn = getConnection();
 			Member loginMember = 
-					mdao.selectLogin(conn, userId, userPwd);
+					mdao.selectLogin(conn, mem_userid, mem_passwd);
 			close(conn);
 			return loginMember;
 		}
 
-		public Member selectMember(String userId) {
+		public Member selectMember(String mem_userid) {
 			Connection conn = getConnection();
 			Member member = 
-					mdao.selectMember(conn, userId);
+					mdao.selectMember(conn, mem_userid);
 			close(conn);
 			return member;
 		}
 
-		public int deleteMember(String userId) {
+		public int deleteMember(String mem_userid) {
 			Connection conn = getConnection();
-			int result = mdao.deleteMember(conn, userId);
+			int result = mdao.deleteMember(conn, mem_userid);
 			if(result > 0)
 				commit(conn);
 			else
@@ -54,9 +54,9 @@ public class MemberService {
 			return result;
 		}
 
-		public int selectCheckId(String userId) {
+		public int selectCheckId(String mem_userid) {
 			Connection conn = getConnection();
-			int result = mdao.selectCheckId(conn, userId);
+			int result = mdao.selectCheckId(conn, mem_userid);
 			close(conn);
 			return result;
 		}
@@ -79,16 +79,16 @@ public class MemberService {
 			return list;
 		}
 
-		public String findId(String userName, String email) {
+		public String findId(String mem_name, String mem_email) {
 			 Connection conn = getConnection();
-	         String findId = mdao.findId(conn, userName, email);
+	         String findId = mdao.findId(conn, mem_name, mem_email);
 	         close(conn);
 	         return findId;
 		}
 
-		public String findPwd(String userId, String userName, String email) {
+		public String findPwd(String mem_userid, String mem_name, String mem_email) {
 			 Connection conn = getConnection();
-	         String findPwd = mdao.findPwd(conn, userId, userName, email);
+	         String findPwd = mdao.findPwd(conn, mem_userid, mem_name, mem_email);
 	         close(conn);
 	         return findPwd;
 		}

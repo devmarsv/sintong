@@ -38,9 +38,9 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		//2.
 		Member member = new Member();
-		member.setUserId(request.getParameter("userid"));
+		member.setmem_userid(request.getParameter("mem_userid"));
 		member.setUserName(request.getParameter("username"));
-		member.setUserPwd(request.getParameter("userpwd"));
+		member.setmem_passwd(request.getParameter("mem_passwd"));
 		member.setAge(Integer.parseInt(request.getParameter("age")));
 		member.setEmail(request.getParameter("email"));
 		member.setPhone(request.getParameter("phone"));
@@ -57,13 +57,13 @@ public class MemberUpdateServlet extends HttpServlet {
 		//4.
 		if(result > 0) {		
 			request.getSession(false).setAttribute("loginMember", member);
-			response.sendRedirect("/first/myinfo?userid=" + member.getUserId());
+			response.sendRedirect("/first/myinfo?mem_userid=" + member.getmem_userid());
 		}else {
 			RequestDispatcher view = 
 					request.getRequestDispatcher(
 					"views/member/memberError.jsp");
 			request.setAttribute("message", 
-					member.getUserId() + 
+					member.getmem_userid() + 
 					" 아이디에 대한 수정처리가 실패하였습니다.");
 			view.forward(request, response);
 		}

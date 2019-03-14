@@ -38,9 +38,9 @@ public class MemberEnrollServlet extends HttpServlet {
 		
 		//2.
 		Member member = new Member();
-		member.setUserId(request.getParameter("userid"));
+		member.setmem_userid(request.getParameter("mem_userid"));
 		member.setUserName(request.getParameter("username"));
-		member.setUserPwd(request.getParameter("userpwd"));
+		member.setmem_passwd(request.getParameter("mem_passwd"));
 		member.setAge(Integer.parseInt(
 				request.getParameter("age").trim()));
 		member.setGender(request.getParameter("gender"));

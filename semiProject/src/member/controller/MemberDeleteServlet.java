@@ -35,10 +35,10 @@ public class MemberDeleteServlet extends HttpServlet {
 		//request 에 대해 인코딩 처리함
 		
 		//2. 전송온 값 꺼내서 변수 또는 객체에 기록 저장하기
-		String userId = request.getParameter("userid");
+		String mem_userid = request.getParameter("mem_userid");
 		
 		//3. 서비스모델로 값 전달하고, 처리 결과 받기
-		int result = new MemberService().deleteMember(userId);
+		int result = new MemberService().deleteMember(mem_userid);
 		
 		//4. 받은 결과에 따라 뷰 선택해서 내보내기
 		if(result > 0) {
@@ -47,7 +47,7 @@ public class MemberDeleteServlet extends HttpServlet {
 			RequestDispatcher view = 
 				request.getRequestDispatcher("views/member/memberError.jsp");
 			request.setAttribute("message", 
-					userId + " 님의 탈퇴처리가 실패하였습니다.");
+					mem_userid + " 님의 탈퇴처리가 실패하였습니다.");
 			view.forward(request, response);
 		}
 	}
