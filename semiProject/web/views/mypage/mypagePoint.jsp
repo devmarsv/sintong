@@ -11,13 +11,15 @@
 	</head>
 	<body>
 	<div class="container myContainer">
-		<div id="list_name">적립금</div>
+		<h2 class="conTit">적립금</h2>
 		
-		<h3><%= loginMember.getMemUserid() %> 님의 총 포인트는 <%= totalp %>p 입니다</h3>
-
+		<div class="alert alert-info" style="text-align:center;">
+			<%= loginMember.getMemName() %> 님의 총 적립금은 <b style="font-weight:bold;font-size:18px;"><i class="fas fa-coins"></i> <%= totalp %> P</b> 입니다
+		</div>
+		
 		<div>
-			<table class="table table-striped table-bordered table-hover">
-				<thead>
+			<table class="table table-hover">
+				<thead class="thead-light">
 					<tr align="center">
 						<th width="15%">날짜</th>
 						<th width="65%">적립금설명</th>
@@ -27,23 +29,24 @@
 				<tbody>
 					<% if(list.size() == 0) { %>
 					<tr>
-						<td colspan=3>
+						<td colspan=3 align="center" style="padding:80px 0 100px;">
+							<p class="far fa-question-circle" style="margin-bottom:10px;display:block;font-size:30px;"></p>
 							적립금 내역이 없습니다.
 						</td>
 					</tr>
 					<% } else { %>
 					<% for(Point p : list) { %>
 						<tr class="boardlist">
-							<td><%= p.getPointPublish() %></td>
-							<td>
+							<td align="center" style="vertical-align:middle;"><%= p.getPointPublish() %></td>
+							<td align="left" style="vertical-align:middle;">
 								<% if(p.getPointValue() >= 0) { %>
-								<span class="mark">적립</span>
+								<span class="pmark mPoint">적립</span>
 								<% } else { %>
-								<span class="mark">사용</span>
+								<span class="pmark mUse">사용</span>
 								<% } %>
 								<%= p.getPointContent() %>
 							</td>
-							<td>
+							<td align="center" style="vertical-align:middle;">
 								<% if(p.getPointValue() >= 0) { %>
 								+<%= p.getPointValue() %>
 								<% } else { %>

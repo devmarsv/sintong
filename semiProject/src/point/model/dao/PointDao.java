@@ -47,7 +47,7 @@ public class PointDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = "select * from point where mem_userid= ? order by point_no desc;";
+		String query = "select * from point where mem_userid = ? order by point_publish desc";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
