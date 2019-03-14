@@ -1,4 +1,4 @@
-package QNA.model.vo;
+package qna.model.vo;
 
 import java.sql.Date;
 

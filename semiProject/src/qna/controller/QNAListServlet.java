@@ -1,4 +1,4 @@
-package QNA.controller;
+package qna.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import QNA.model.service.QNAService;
-import QNA.model.vo.QNA;
+import qna.model.service.QNAService;
+import qna.model.vo.QNA;
 
 /**
  * Servlet implementation class QNAListServlet
@@ -63,7 +63,7 @@ public class QNAListServlet extends HttpServlet {
 			view.forward(request, response);
 		} else {
 			view = request.getRequestDispatcher("views/board/boardError.jsp");
-			request.setAttribute("message", currentPage + "에 대한 QNA 목록 조회에 실패하였습니다.");
+			request.setAttribute("message", currentPage + "�뿉 ���븳 QNA 紐⑸줉 議고쉶�뿉 �떎�뙣�븯���뒿�땲�떎.");
 			view.forward(request, response);
 		}
 	}

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" errorPage="./boardError.jsp"%>
-<%@ page import="QNA.model.vo.QNA, java.util.*, java.sql.Date" %>
+<%@ page import="qna.model.vo.QNA, java.util.*, java.sql.Date" %>
 <%
 	QNA qna = (QNA)request.getAttribute("qna");
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();

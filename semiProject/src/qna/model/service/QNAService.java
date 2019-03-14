@@ -1,4 +1,4 @@
-package QNA.model.service;
+package qna.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" errorPage="./boardError.jsp" errorPage="./boardError.jsp" %>
-<%@ page import="QNA.model.vo.QNA, java.util.*" %>
+<%@ page import="qna.model.vo.QNA, java.util.*" %>
 <%
 	ArrayList<QNA> list = (ArrayList<QNA>)request.getAttribute("list");
 	int listCount = ((Integer)request.getAttribute("listCount")).intValue();

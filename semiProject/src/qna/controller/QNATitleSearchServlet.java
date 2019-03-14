@@ -1,4 +1,4 @@
-package QNA.controller;
+package qna.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import QNA.model.service.QNAService;
-import QNA.model.vo.QNA;
+import qna.model.service.QNAService;
+import qna.model.vo.QNA;
 
 /**
  * Servlet implementation class QNATitleSearchServlet
@@ -67,7 +67,7 @@ public class QNATitleSearchServlet extends HttpServlet {
 			view.forward(request, response);
 		} else {
 			view = request.getRequestDispatcher("views/board/boardError.jsp");
-			request.setAttribute("message", search + "QNA 검색결과가 없습니다.");
+			request.setAttribute("message", search + "QNA 寃��깋寃곌낵媛� �뾾�뒿�땲�떎.");
 			view.forward(request, response);
 		}
 	}

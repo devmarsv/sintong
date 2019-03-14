@@ -1,4 +1,4 @@
-package QNA.controller;
+package qna.controller;
 
 import java.io.IOException;
 
@@ -53,7 +53,7 @@ public class QNADetailServlet extends HttpServlet {
 			view.forward(request, response);
 		} else {
 			view = request.getRequestDispatcher("views/board/boardError.jsp");
-			request.setAttribute("message", "QNA 조회를 실패하였습니다.");
+			request.setAttribute("message", "QNA 議고쉶瑜� �떎�뙣�븯���뒿�땲�떎.");
 			view.forward(request, response);
 		}
 	}

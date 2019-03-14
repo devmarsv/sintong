@@ -1,4 +1,4 @@
-package QNA.model.dao;
+package qna.model.dao;
 
 import static common.JDBCTemplate.close;
 
@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import QNA.model.vo.QNA;
+import qna.model.vo.QNA;
 
 public class QNADao {
 
