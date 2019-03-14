@@ -11,20 +11,56 @@
 	background:url(/semi/resources/images/bg_mypage_top.png) no-repeat center;
 	background-size:auto 210px;
 	-webkit-background-size:auto 210px;
+	border-bottom:1px solid #eee;
 }
 .mypageTop .topCon{width:1100px;margin:0 auto;}
-.mypageTop .topCon h2{float:right;}
+.mypageTop .topCon h2{
+	float:right;
+	line-height: 100px;
+    vertical-align: bottom;
+	font-size: 30px;
+    font-weight: bold;
+    padding-top: 100px;
+	}
+
+
+.navTit{
+	width:260px;
+	height:40px;
+	line-height:40px;
+	background:#555;
+	text-align:center;
+	color:#fff;
+	font-weight:bold;
+	}
 
 
 /** mypage content **/
-.myContent{width:1100px;margin:0 auto;}
-.myContainer{float:right;width:800px !important;}
+.myContent{width:1100px;margin:0 auto;padding-top:30px;}
+.myContainer{
+	float:right;
+	width:800px !important;
+	margin-top:-40px;
+	padding-bottom: 100px;
+    min-height: 700px;
+	}
+.myContainer .conTit{
+	font-size: 26px;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #eee;
+	}
+
 #mypage_nav{
 	float:left;
-	width:280px !important;
+	width:260px !important;
+	padding: 7px 0 !important;
 	}
+#mypage_nav .navCon{width:100%;display:block !important;}
 #mypage_nav .navbar-nav{display:block !important;}
-#mypage_nav ul li.nav-item{display:block !important;}
+#mypage_nav ul li.nav-item{display:block !important;text-align:left;padding:3px 15px;}
+#mypage_nav ul li.nav-item a{border-top:1px solid #eee;}
+#mypage_nav ul li.nav-item:first-child a{border-top:none;}
 
 #mypage_title {
 	width: 100%;
@@ -40,16 +76,11 @@
 	margin: 0 auto;
 }
 
-#nav_list {
-	color: #808080;
-	width: 165px;
-	margin: 0 auto;
-	text-align: center;
-} 
-
 #name_hello {
-	font-size: 30px;
-	padding: 30px;
+	font-size: 26px;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #eee;
 }
 
 #info_table {
@@ -184,3 +215,99 @@
 	padding: 20px;
 	font-size: 15px;
 }
+
+
+
+.myPwCon ul{
+	width: 400px;
+	margin: 0 auto;
+	padding: 30px 0;
+	text-align: center;
+}
+.myPwCon ul li{display:inline-block; vertical-align: top;height: 38px;}
+.myPwCon ul li span{
+	font-size:12px;
+	font-weight:bold;
+	line-height:38px;
+	}
+.myPwCon p.red{
+	text-align: center;
+    color: #ff5500;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 30px;
+	}
+
+.myContainer .pmark{
+	display:inline-block;
+	width:60px;
+	height:60px;
+	border-radius:60px;
+	-webkit-border-radius:60px;
+	text-align:center;
+	line-height:60px;
+	margin-right:15px;
+	}
+.myContainer .pmark.mPoint{
+	border:1px solid #7adf68;
+	color:#39c934;
+	}
+.myContainer .pmark.mUse{
+	border:1px solid #f0b6b6;
+	color:#d95555;
+	}
+
+
+.myContainer .couponList{width:100%;text-align:center;}
+.myContainer .couponList .noList{text-align:center;padding:120px 0 100px;}
+.myContainer .couponList .couponBox{
+	width:230px;
+	display: inline-block;
+	vertical-align:top;
+	margin:0 10px 20px 10px;
+	}
+.myContainer .couponList .couponBox .box{
+	background:url(/semi/resources/images/bg_couponbox_btm.png) left bottom no-repeat;
+	background-size:230px auto;
+	padding-bottom:10px;
+	position:relative;
+	}
+.myContainer .couponList .couponBox .box .title{
+	background:url(/semi/resources/images/bg_couponbox_top.png) left top no-repeat;
+	background-size:230px auto;
+	}
+.myContainer .couponList .couponBox .box .used{
+	position:absolute;
+	left:0; top:0;
+	width:100%;
+	height:91px;
+	background:rgba(0, 0, 0, 0.5);
+	text-align:center;
+	line-height:91px;
+	font-size:20px;
+	}
+.myContainer .couponList .couponBox .box .used span{color:#fff;font-weight:bold;}
+.myContainer .couponList .couponBox .box .title .tag{
+	display: block;
+    overflow: hidden;
+    height: 91px;
+    padding: 30px 0 0;
+    text-align: center;
+	font-size:33px;
+	line-height:33px;
+	font-weight:bold;
+	color:#5d7f17;
+	background:url(/semi/resources/images/bg_tag_red.png) left top no-repeat;
+	}
+.myContainer .couponList .couponBox .box .account{
+	background:url(/semi/resources/images/bg_couponbox_middle.png) left top repeat-y;
+	background-size:230px auto;
+	padding:10px 15px;
+	}
+.myContainer .couponList .couponBox .box .account ul li{
+	border-bottom:1px solid #eee;
+	padding:3px 0;
+	font-size:12px;
+	text-align:left;
+	}
+.myContainer .couponList .couponBox .box .account ul li.name{font-weight:bold;font-size:13px;}
