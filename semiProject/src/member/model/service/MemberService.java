@@ -15,6 +15,17 @@ public class MemberService {
 	
 	public MemberService() {}
 	
+	//회원가입
+	public int insertMember(Member member) {
+		Connection conn = getConnection();
+		int result = mdao.insertMember(conn, member);
+		if(result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
 	// 로그인 체크
 	public Member loginCheck(String memUserid, String memPasswd) {
 		Connection conn = getConnection();

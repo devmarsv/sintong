@@ -11,6 +11,35 @@ import member.model.vo.Member;
 public class MemberDao {
 	public MemberDao() {}
 	
+	public int insertMember(Connection conn, Member member) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = "insert into member values(?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate, default, default, 1)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getMemUserid());
+			pstmt.setString(2, member.getMemPasswd());
+			pstmt.setString(3, member.getMemName());
+			pstmt.setDate(4, member.getMemBirth());
+			pstmt.setString(5, member.getMemGender());
+			pstmt.setString(6, member.getMemTel());
+			pstmt.setString(7, member.getMemEmail());
+			pstmt.setString(8, member.getMemAddr1());
+			pstmt.setString(9, member.getMemAddr2());
+						
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
 	public Member selectLogin(Connection conn, String memUserid, String memPasswd) {
 		Member member = null;
 		PreparedStatement pstmt = null;
