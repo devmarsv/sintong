@@ -107,7 +107,7 @@
 						  <li class="nav-item"><a class="nav-link" href="/semi/views/product/timeProductList.jsp">반짝떨이</a></li>
 						  <li class="nav-item"><a class="nav-link" href="/semi/views/product/bestProductList.jsp">베스트</a></li>
 						  <li class="nav-item"><a class="nav-link" href="#;">주차 현황</a></li>
-						  <li class="nav-item"><a class="nav-link" href="#;">고객 센터</a></li>
+						  <li class="nav-item"><a class="nav-link" href="/semi/views/board/boardMain.jsp">고객 센터</a></li>
 						</ul>
 					</div>
 				</div>
