@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" errorPage="./boardError.jsp" %>
-<%@ page import = "java.sql.Date" %>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +12,6 @@
 		<div id="list_name">QnA</div>
 
 		<br>
-		<form action="/semi/qwrite" method="post" enctype="multipart/form-data">
 			<table id="write_form">
 				<tr>
 					<th id="form_title">제목</th>
@@ -25,18 +23,21 @@
 				</tr>
 				<tr>
 					<th id="form_title">작성일</th>
-					<td colspan="3" id="form_content">sysdate</td>
+					<td colspan="3" id="form_content">기본날짜</td>
 				</tr>
 				<tr>
 					<td colspan="4" id="board_content"><textarea cols="100"	rows="20" name="bcontent"></textarea></td>
 				</tr>
+				<tr>
+					<th id="form_title">파일첨부</th>
+					<td colspan="3" id="form_content"><input type="file" name="upfile"></td>
+				</tr>
 			</table>
-		</form>
-			
+
 			<div id="list_button">
 				<input type="submit" value="등록" id="button_border">&nbsp;
 				<button type="button" id="button_border">
-					<a href="/semi/qlist" id="button_title">목록</a>
+					<a href="board_QnA.html" id="button_title">목록</a>
 				</button>
 			</div>
 		</div>

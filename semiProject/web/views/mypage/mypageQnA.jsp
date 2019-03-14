@@ -40,32 +40,27 @@
 	</head>
 	<body>
 		<div class="container myContainer">
-			<h2 class="conTit">내가 쓴 QnA(<%= listCount %>)</h2>
-			<div style="text-align:right;margin-bottom:15px;"><a href="/semi/views/mypage/mypageQnaWrite.jsp" class="btn btn-info">QnA 글 작성하기</a></div>
+			<div id="list_name">내가 쓴 QnA(<%= listCount %>)</div>
+			<div><a href="">QnA 글 작성하기</a></div>
 			<div>
 				<table class="table table-hover">
 					<thead>
-						<th style="text-align:center;">답변상태</th>
-						<th style="text-align:center;">내용</th>
-						<th style="text-align:center;">관리</th>
+						<th>답변상태</th>
+						<th>QnA 내용</th>
+						<th>관리</th>
 					</thead>
 					<tbody>
-						<% if(myqnaList.size() == 0) { %>
-						<tr>
-							<td colspan=3 class="noList">작성한 QnA가 없습니다.</td>
-						</tr>
-						<% } else { %>
 						<% for(MyQna myqna : myqnaList){ %>
 						<tr>
 							<input type="hidden" value="<%= myqna.getmQnaNo() %>" />
-							 <td width="15%" style="text-align:center;vertical-align:middle;">
+							 <td width="20%">
 							 	<% if(myqna.getQnaAnsYn().equals("Y")){ %>
 							 	<p class="aDone">답변완료</p>
 							 	<% } else { %>
 							 	<p class="aYet">답변대기</p>
 							 	<% } %>
 							 </td>
-							 <td width="70%" style="vertical-align:middle;">
+							 <td width="70%">
 							 	<div class="qBox">
 							 		<div class="mark">Q</div>
 							 		<div class="content">
@@ -92,26 +87,20 @@
 							 	<!-- </div> -->
 							 	<% } %>
 							 </td>
-							 <td width="15%" style="text-align:center;vertical-align:middle;">
+							 <td width="10%">
 							 	<% if(myqna.getQnaAnsYn().equals("N")) { %>
-							 	<p style="margin-bottom:10px;">
-							 		<a href="/semi/myqnaview?pqnum=<%= myqna.getmQnaNo() %>&page=<%= currentPage %>" class="btModify btn btn-secondary" style="font-size:12px;">수정</a>
-							 	</p>
+							 	<p><a href="/semi/myqnaview?pqnum=<%= myqna.getmQnaNo() %>&page=<%= currentPage %>" class="btModify">수정</a></p>
 							 	<% } %>
-							 	<p>
-							 		<button name="delno" data-value="<%= myqna.getQnaQid() %>" value="<%= myqna.getmQnaNo() %>" class="btDelete btn btn-light" style="font-size:12px;">삭제</button>
-							 	</p>
+							 	<p><button name="delno" data-value="<%= myqna.getQnaQid() %>" value="<%= myqna.getmQnaNo() %>" class="btDelete">삭제</button></p>
 							 </td>
 						</tr>
-						<% } %>
 						<% } %>
 					</tbody>
 				</table>
 				
 				<!-- Paging 처리 -->
-				<% if(myqnaList.size() > 0) { %>
-				<nav aria-label="Page navigation example" style="text-align:center;margin-top:30px;">
-				  <ul class="pagination justify-content-center">
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination">
 				  	<!-- 이전 -->
 				    <li class="page-item">
 				   	<% if((currentPage - 5) < startPage && (currentPage - 5) > 1){ %>
@@ -159,7 +148,6 @@
 				    <!-- //다음 -->
 				  </ul>
 				</nav>
-				<% } %>
 			</div>
 		</div>
 		</div>

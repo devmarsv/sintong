@@ -147,6 +147,15 @@ public class MyQnaDao {
 			pstmt.setString(7, mqview.getQnaAid());
 			pstmt.setString(8, mqview.getmQnaNo());
 			
+//			mqview.setmQnaNo(rset.getString("qna_no"));
+//			mqview.setmQnaTitle(rset.getString("qna_title"));
+//			mqview.setmQnaDate(rset.getDate("qna_date"));
+//			mqview.setQnaQContent(rset.getString("qna_qcontent"));
+//			mqview.setQnaAnsYn(rset.getString("qna_ans_yn"));
+//			mqview.setQnaAContent(rset.getString("qna_acontent"));
+//			mqview.setQnaQid(rset.getString("qna_qid"));
+//			mqview.setQnaAid(rset.getString("qna_aid"));
+			
 			result = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -167,32 +176,6 @@ public class MyQnaDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, qnaNum);
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}
-
-	public int insertQna(Connection conn, MyQna mqview) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		
-		String query = "insert into qna values( "
-				+ "(select * from( "
-				+ "select 'qna'||(max(to_number(substr(qna_no, 4))) + 1) from qna)), "
-				+ "?, sysdate, ?, default, default, ?, default, 0)";
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, mqview.getmQnaTitle());
-			pstmt.setString(2, mqview.getQnaQContent());
-			pstmt.setString(3, mqview.getQnaQid());
 			
 			result = pstmt.executeUpdate();
 			

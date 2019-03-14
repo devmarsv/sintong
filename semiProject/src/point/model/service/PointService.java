@@ -21,9 +21,9 @@ public class PointService {
 		return totalPoint;
 	}
 
-	public ArrayList<Point> selectList(String userId) {
+	public ArrayList<Point> selectList() {
 		Connection conn = getConnection();
-		ArrayList<Point> list = pdao.selectList(conn, userId);
+		ArrayList<Point> list = pdao.selectList(conn);
 		close(conn);
 		return list;
 	}

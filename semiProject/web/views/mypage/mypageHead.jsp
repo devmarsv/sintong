@@ -38,8 +38,8 @@
 					<!-- 로그인 전 -->
 					<% } else { %>
 					<!-- 로그인 후 -->
-					<li><span class="user"><%= loginMember.getMemName() %></span>님 안녕하세요!</li>
 					<li><a href="/semi">홈</a></li>
+					<li><span class="user"><%= loginMember.getMemName() %></span>님 안녕하세요!</li>
 					<li><a href="/semi/logout">로그아웃</a></li>
 					<li><a href="#;">장바구니</a></li>
 					<li><a href="/semi/myinfo?mem_userid=<%= loginMember.getMemUserid() %>">마이페이지</a></li>
@@ -55,15 +55,14 @@
 			</div>
 		</header>
 		<div class="myContent">
-			<div class="navTit">QUICK MENU</div>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light" id="mypage_nav">
-				<div class="navCon">
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active"><a class="nav-link" href="/semi/myinfo?mem_userid=<%= loginMember.getMemUserid() %>" id="nav_list">내정보</a></li>
-						<li class="nav-item"><a class="nav-link" href="/semi/views/mypage/mypageMyInfoConfirm.jsp" id="nav_list">개인정보수정</a></li>
+						<li class="nav-item"><a class="nav-link" href="/semi/views/mypage/mypageUpdateInfo.jsp" id="nav_list">개인정보수정</a></li>
 						<li class="nav-item"><a class="nav-link" href="/semi/pointlist?mem_userid=<%= loginMember.getMemUserid() %>" id="nav_list">적립금</a></li>
 						<li class="nav-item"><a class="nav-link" href="/semi/couponlist?mem_userid=<%= loginMember.getMemUserid() %>" id="nav_list">쿠폰</a></li>
-						<li class="nav-item"><a class="nav-link" href="/semi/orderlist?mem_userid=<%= loginMember.getMemUserid() %>" id="nav_list">주문 조회</a></li>
+						<%-- <li class="nav-item"><a class="nav-link" href="/semi/orderlist?mem_userid=<%= loginMember.getMemUserid() %>" id="nav_list">주문/배송조회</a></li> --%>
 						<li class="nav-item"><a class="nav-link" href="/semi/myqna?mem_userid=<%= loginMember.getMemUserid() %>&page=1" id="nav_list">내가 쓴 QnA</a></li>
 						<li class="nav-item"><a class="nav-link" href="/semi/mypreview?mem_userid=<%= loginMember.getMemUserid() %>&page=1" id="nav_list">내가 쓴 후기</a></li>
 					</ul>

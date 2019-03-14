@@ -36,7 +36,7 @@ public class PointListServlet extends HttpServlet {
 		PointService pservice = new PointService();
 		String userId = request.getParameter("mem_userid");
 		
-		List<Point> pointList =  pservice.selectList(userId);
+		List<Point> pointList =  pservice.selectList();
 		int totalPoint = pservice.getTotalPoint(userId);
 		
 		response.setContentType("text/html; charset=UTF-8");

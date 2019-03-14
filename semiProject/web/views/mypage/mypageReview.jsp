@@ -31,7 +31,7 @@
 	</head>
 	<body>
 		<div class="container myContainer">
-			<h2 class="conTit">내가 쓴 후기(<%= listCount %>)</h2>
+			<div id="list_name">내가 쓴 후기(<%= listCount %>)</div>
 			<div>
 				<table class="table table-hover">
 					<thead>
@@ -39,11 +39,6 @@
 						<th>후기내용</th>
 					</thead>
 					<tbody>
-						<% if(mypList.size() == 0) { %>
-						<tr>
-							<td colspan=3>작성된 후기가 없습니다.</td>
-						</tr>
-						<% } else { %>
 						<% for(MyPdReview mypr : mypList){ %>
 						<tr>
 							 <td width="30%">
@@ -67,12 +62,10 @@
 							 </td>
 						</tr>
 						<% } %>
-						<% } %>
 					</tbody>
 				</table>
 				
 				<!-- Paging 처리 -->
-				<% if(mypList.size() > 0) { %>
 				<nav aria-label="Page navigation example">
 				  <ul class="pagination">
 				  	<!-- 이전 -->
@@ -122,7 +115,6 @@
 				    <!-- //다음 -->
 				  </ul>
 				</nav>
-				<% } %>
 			</div>
 		</div>
 		</div>

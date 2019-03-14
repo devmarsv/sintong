@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="admin.product.model.vo.*" %>
-<%
-	Product p = (Product) request.getAttribute("product");
-%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -28,67 +24,55 @@
 						<tbody>
 							<tr>
 								<th width="20%">상품코드</th>
-								<td><%=p.getpNo() %></td>
-							</tr>
-							<tr>
-								<th width="20%">카테고리</th>
-								<td><%=p.getpCategory() %></td>
+								<td>111</td>
 							</tr>
 							<tr>
 								<th width="20%">상품명</th>
-								<td><%=p.getpName() %></td>
+								<td>사과</td>
 							</tr>
 							<tr>
 								<th width="20%">가격명</th>
-								<td><%=p.getpPrice() %> 원</td>
+								<td>5000 원</td>
 							</tr>
 							<tr>
 								<th width="20%">옵션1</th>
-								<td><%=p.getpOption1() %></td>
+								<td></td>
 							</tr>
 							<tr>
 								<th width="20%">옵션2</th>
-								<td><%=p.getpOption2() %></td>
+								<td></td>
 							</tr>
 							<tr>
 								<th width="20%">재고수량</th>
-								<td><%=p.getpStock() %></td>
-							</tr>
-							<tr>
-								<th width="20%">원산지</th>
-								<td><%=p.getpOrigin() %></td>
+								<td>55</td>
 							</tr>
 							<tr>
 								<th width="20%">상품설명</th>
-								<td><%=p.getpDesc() %></td>
+								<td>영천에서 올라온 금사과</td>
 							</tr>
 							<tr>
 								<th width="20%">상품상세설명</th>
-								<td><%=p.getpDetail() %></td>
+								<td>영천은 사과로 유명한 곳이다.</td>
 							</tr>
 							<tr>
 								<th width="20%">상품이미지</th>
-								<td><%=p.getpImg() %></td>
+								<td></td>
 							</tr>
 							<tr>
 								<th width="20%">상품리뷰 개수</th>
-								<td><%=p.getpReviewNum() %></td>
+								<td>50</td>
 							</tr>
 							<tr>
 								<th width="20%">상품문의 개수</th>
-								<td><%=p.getpQnaNum() %></td>
-							</tr>
-							<tr>
-								<th width="20%">판매매장코드</th>
-								<td><%=p.getsNo() %></td>
+								<td>4319</td>
 							</tr>
 							<tr>
 								<td colspan="2">
-									<a href="/semi/pmodify?pno=<%=p.getpNo() %>" class="btn btn-success btn-icon-split">
+									<a href="#" class="btn btn-success btn-icon-split">
 										<span class="icon text-white-50" size="20px"> <i class="fas fa-check"></i></span>
 										<span class="text">수정</span>
 									</a> &nbsp; &nbsp;
-									<a href="/semi/pdelete?pno=<%=p.getpNo() %>" class="btn btn-danger btn-icon-split">
+									<a href="#" class="btn btn-danger btn-icon-split">
 										<span class="icon text-white-50"> <i class="fas fa-trash"></i></span>
 										<span class="text">상품 삭제</span>
 									</a>

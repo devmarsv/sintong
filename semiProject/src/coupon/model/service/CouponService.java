@@ -12,9 +12,9 @@ import coupon.model.vo.Coupon;
 public class CouponService {
 	private CouponDao cdao = new CouponDao();
 
-	public List<Coupon> selectList(String userId) {
+	public List<Coupon> selectList() {
 		Connection conn = getConnection();
-		ArrayList<Coupon> list = cdao.selectList(conn, userId);
+		ArrayList<Coupon> list = cdao.selectList(conn);
 		close(conn);
 		return list;
 	}

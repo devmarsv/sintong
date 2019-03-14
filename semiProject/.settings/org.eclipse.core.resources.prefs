@@ -1,7 +1,4 @@
 eclipse.preferences.version=1
 encoding//src/member/controller/LogoutServlet.java=UTF-8
 encoding//src/productReview/controller/ReviewModifyServlet.java=UTF-8
-encoding//src/qna/controller/QNADetailServlet.java=UTF-8
-encoding//src/qna/controller/QNAListServlet.java=UTF-8
-encoding//src/qna/controller/QNATitleSearchServlet.java=UTF-8
 encoding//web/resources/css/common.css=UTF-8
