@@ -11,13 +11,21 @@
 	</head>
 	<body>
 	<div class="container myContainer">
-		<div id="list_name">쿠폰</div>
+		<h2 class="conTit">쿠폰</h2>
 		
-		<h3><%= loginMember.getMemUserid() %> 님의 쿠폰은 <%= list.size() %>장 입니다</h3>
+		<div class="alert alert-info" style="text-align:center;">
+			<%= loginMember.getMemName() %> 님의 쿠폰은 총 <b style="font-weight:bold;"><i class="fas fa-money-check-alt"></i> <%= list.size() %>장</b> 입니다
+		</div>
 
 		<div class="couponList">
+			<% if(list.size() == 0) { %>
+				<div class="noList">
+					<p class="far fa-question-circle" style="margin-bottom:10px;display:block;font-size:30px;"></p>
+					쿠폰 내역이 없습니다.
+				</div>
+			<% } else { %>
 			<% for(Coupon c : list) { %>
-				<div class="couponBox ">
+				<div class="couponBox">
 					<div class="box">
 						<div class="title">
 							<span class="tag red">
@@ -27,7 +35,6 @@
 						<% if(c.getCouponUsed().equals("Y")) { %>
 							<div class="used"><span>사용완료</span></div>
 						<% } %>
-						
 						<div class="account">
 							<ul>
 								<li class="name"><%= c.getCouponName() %></li>
@@ -41,6 +48,7 @@
 						</div>
 					</div>
 				</div>
+			<% } %>
 			<% } %>
 		</div>
 	</div>
