@@ -43,6 +43,42 @@ public class MemberService {
 		return result;
 	}
 
+	// ºñ¹Ð¹øÈ£ È®ÀÎ
+	public int passwdCheck(String userId, String userPw) {
+		Connection conn = getConnection();
+		int result = mdao.passwdCheck(conn, userId, userPw);
+		close(conn);
+		return result;
+	}
+
+	// È¸¿ø ÃÑ Æ÷ÀÎÆ® Á¶È¸
+	public int getTotalPoint(String memUserId) {
+		Connection conn = getConnection();
+		int result = mdao.getTotalPoint(conn, memUserId);
+		close(conn);
+		return result;
+	}
+
+	// È¸¿ø ÃÑ ÄíÆù °¹¼ö Á¶È¸
+	public int getTotalCoupon(String memUserId) {
+		Connection conn = getConnection();
+		int result = mdao.getTotalCoupon(conn, memUserId);
+		close(conn);
+		return result;
+	}
+
+	// È¸¿ø Å»Åð Ã³¸®
+	public int deleteMember(String userId) {
+		Connection conn = getConnection();
+		int result = mdao.deleteMember(conn, userId);
+		if(result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
+
 
 }
 

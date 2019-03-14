@@ -37,12 +37,17 @@ public class MyInfoServlet extends HttpServlet {
 		
 		String memUserId = request.getParameter("mem_userid");
 		
-		Member member = new MemberService().selectMember(memUserId);
+		MemberService mservice = new MemberService();
+		Member member = mservice.selectMember(memUserId);
+		int totalPoint = mservice.getTotalPoint(memUserId);
+		int totalCoupon = mservice.getTotalCoupon(memUserId);
 		
 		RequestDispatcher view = null;
 		if(member != null) {
 			view = request.getRequestDispatcher("views/mypage/mypageMain.jsp");
 			request.setAttribute("member", member);
+			request.setAttribute("totalpoint", totalPoint);
+			request.setAttribute("totalcoupon", totalCoupon);
 			view.forward(request, response);
 		} else {
 			view = request.getRequestDispatcher("views/mypage/mypageError.jsp");
