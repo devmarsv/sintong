@@ -1,20 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="member.model.vo.Member, java.util.*"%>
-<% Member loginMember = (Member) session.getAttribute("loginMember");%>
+
 <% String findPwd = (String)session.getAttribute("findPwd"); %>
 <!DOCTYPE html>
 <html>
 
 <head>
+<%@ include file="/views/common/header.jsp"%>
 <meta charset="UTF-8">
 <title>registerResult</title>
-<%@ include file="/views/common/header.jsp"%>
+
 <link rel="stylesheet" href="/semi/resources/css/member.css" />
 <script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
-<% if(loginMember != null && loginMember.getMem_userid().equals("admin")){ %>
+<% if(loginMember != null && loginMember.getMemUserid().equals("admin")){ %>
 	<%@ include file="/views/admin/adminHeader.jsp" %> <!-- 절대경로 -->
 <% } %>
 	<section>
@@ -40,10 +41,10 @@
 		<%-- 로그인한 상태일 때 보여지는 부분 --%>
 		<table width="200" cellpadding="0" cellspacing="5" border="0">
 			<tr>
-				<td><%=loginMember.getMem_name()%>님</td>
+				<td><%=loginMember.getMemName()%>님</td>
 				<%-- 쿼리스트링(query string)
                 서블릿매핑이름?이름=값&이름=값 --%>
-				<td><a href="/semi/myinfo?mem_userid=<%=loginMember.getMem_userid()%>">내
+				<td><a href="/semi/myinfo?mem_userid=<%=loginMember.getMemUserid()%>">내
 						정보 보기</a></td>
 			</tr>
 			<tr>

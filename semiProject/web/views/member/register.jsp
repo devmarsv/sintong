@@ -5,13 +5,15 @@
 <head>
 <%@ include file="/views/common/header.jsp"%>
 <link rel="stylesheet" href="/semi/resources/css/member.css" />
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="/semi/resources/js/juso.js"></script>
+
 </head>
 <body>
 	<div id="logreg-forms-register" class="container">
 		<br>
 		<!-- 회원가입 -->
-		<form action="/semi/register" class="form-signup"
-			style="display: block;">
+		<form action="/semi/register" class="form-signup" method="post" style="display: block;">
 			<!-- 회원가입 폼 -->
 
 			<h1 class="h3 mb-3 font-weight-bold " style="text-align: center">
@@ -52,8 +54,11 @@
 				</div>
 				<input type="phone" id="phone" name="mem_tel" class="form-control" placeholder="* 핸드폰" required autofocus=""> 
 				<input type="email" id="email" name="mem_email" class="form-control" placeholder="* 이메일 주소" required autofocus="">
-				<input type="text" id="address" name="mem_addr1" class="form-control" placeholder="* 주 소1" required autofocus="">
-				<input type="text" id="address" name="mem_addr1" class="form-control" placeholder="* 주 소2" autofocus="">
+				
+				<input type="text" id="sample6_address" name="mem_addr1" class="form-control" placeholder="* 주 소" required autofocus="">
+				<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+				<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+				<input type="text" id="address2" name="mem_addr1" class="form-control" placeholder="주 소2" autofocus="">
 				
 			</div>
 			<button class="btn btn-primary btn-block" type="submit">
