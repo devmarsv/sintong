@@ -12,6 +12,7 @@ public class MyQna {
 	private String qnaAContent;
 	private String qnaQid;
 	private String qnaAid;
+	private int readcount;
 	
 	public MyQna() {}
 	
@@ -90,6 +91,14 @@ public class MyQna {
 
 	public void setQnaAid(String qnaAid) {
 		this.qnaAid = qnaAid;
+	}
+	
+	public int getReadCount() {
+		return readcount;
+	}
+
+	public void setReadCount(int readcount) {
+		this.readcount = readcount;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package coupon.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -34,8 +35,9 @@ public class CouponListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 쿠폰 리스트 불러오기
 		CouponService cservice = new CouponService();
+		String userId = request.getParameter("mem_userid");
 		
-		List<Coupon> couponList = cservice.selectList();
+		List<Coupon> couponList = cservice.selectList(userId);
 		
 		response.setContentType("text/html; charset=utf-8");
 		RequestDispatcher view = null;

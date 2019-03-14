@@ -1,7 +1,7 @@
-package point.controller;
+package qna.controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import point.model.service.PointService;
-import point.model.vo.Point;
+import qna.model.service.MyQnaService;
+import qna.model.vo.MyQna;
 
 /**
- * Servlet implementation class PointListServlet
+ * Servlet implementation class MyQnaInsertServlet
  */
-@WebServlet("/pointlist")
-public class PointListServlet extends HttpServlet {
+@WebServlet("/mqinsert")
+public class MyQnaInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PointListServlet() {
+    public MyQnaInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,22 +32,21 @@ public class PointListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 포인트 리스트 불러오기
-		PointService pservice = new PointService();
-		String userId = request.getParameter("mem_userid");
+		// QnA 등록하기
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		
-		List<Point> pointList =  pservice.selectList(userId);
-		int totalPoint = pservice.getTotalPoint(userId);
-		
-		response.setContentType("text/html; charset=UTF-8");
-		RequestDispatcher view = null;
-		if(pointList != null) {
-			view = request.getRequestDispatcher("views/mypage/mypagePoint.jsp");
-			request.setAttribute("pointList", pointList);
-			request.setAttribute("totalPoint", totalPoint);
-			view.forward(request, response);
+		MyQna mqview = new MyQna();
+		mqview.setmQnaTitle(request.getParameter("mqtitle"));
+		mqview.setQnaQContent(request.getParameter("mqcontent"));
+		mqview.setQnaQid(request.getParameter("mqwriter"));
+				
+		int result = new MyQnaService().insertQna(mqview);
+		if(result > 0) {
+			response.sendRedirect("/semi/myqna?mem_userid=" + mqview.getQnaQid());
 		} else {
-			view = request.getRequestDispatcher("views/mypage/mypageError.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("views/mypage/mypageError.jsp");
+			request.setAttribute("message", "게시글 등록 실패!");
 			view.forward(request, response);
 		}
 	}

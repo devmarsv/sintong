@@ -55,7 +55,7 @@ public class myReviewServlet extends HttpServlet {
 		
 		response.setContentType("text/html; charset=utf-8");
 		RequestDispatcher view = null;
-		if(mypList.size() > 0) {
+		if(mypList.size() >= 0) {
 			view = request.getRequestDispatcher("views/mypage/mypageReview.jsp");
 			request.setAttribute("mypList", mypList);
 			request.setAttribute("currentPage", currentPage);
