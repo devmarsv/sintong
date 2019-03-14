@@ -1,24 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="qna.model.vo.MyQna" %>
-<%
-	//MyQna mqview = (MyQna)request.getAttribute("mqview");
-	int currentPage = ((Integer)request.getAttribute("page")).intValue();
-%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<%@ include file="/views/mypage/mypageHead.jsp"%>
 		<script type="text/javascript">
-			function modifyDone(){
-				var myqNumVal = document.getElementById("myQnum").getAttribute('value');
-				var myqPageVal = document.getElementById("myQpage").getAttribute('value');
-				var mDone = confirm("입력하신 내용으로 등록하시겠습니까?");
-				if(mDone == true){
+			function insertDone(){
+				var userId = document.getElementById('myQwriter').getAttribute('value');
+				var iDone = confirm("입력하신 내용으로 등록하시겠습니까?");
+				if(iDone == true){
 				  alert("글이 정상적으로 등록되었습니다!");
-				  document.location.href = "/semi/myqna?mem_userid=" + myqNumVal + "&page=" + myqPageVal;
+				  document.location.href = "/semi/myqna?mem_userid=" + userId + "&page=1";
 				  return true;
-				} else if (mDone == false){
+				} else if (iDone == false){
 				  return false;
 				}
 			}
@@ -38,12 +33,7 @@
 	<body>
 		<div class="container myContainer">
 			<div id="list_name">QnA 작성하기</div>
-			<form action="/semi/qnamodify" method="post" onsubmit="return modifyDone();">
-				<input type="hidden" name="page" id="myQpage" value="<%= currentPage %>">
-				<%-- <input type="hidden" name="pqnum" id="myQnum" value="<%= mqview.getmQnaNo() %>">
-				<input type="hidden" name="mqayn" value="<%= mqview.getQnaAnsYn() %>">
-				<input type="hidden" name="mqacontent" value="<%= mqview.getQnaAContent() %>">
-				<input type="hidden" name="mqaid" value="<%= mqview.getQnaAid() %>"> --%>
+			<form action="/semi/mqinsert" method="post" onsubmit="return insertDone();">
 				<table id="title_form">
 					<thead>
 						<tr>
@@ -55,7 +45,7 @@
 						<tr>
 							<th id="form_title">작성자</th>
 							<td colspan="3" id="form_content">
-								<input type="text" id="popRwriter" name="mqwriter" value="<%= mqview.getQnaQid() %>"  readonly />
+								<input type="text" id="myQwriter" name="mqwriter" value="<%= loginMember.getMemUserid() %>"  readonly />
 							</td>
 						</tr>
 					</thead>
@@ -63,7 +53,7 @@
 						<tr>
 							<td colspan="4" id="board_content-1">
 								<p id="text-count">(0 / 300)</p>
-								<textarea name="mqcontent" id="popRcontent"></textarea>
+								<textarea name="mqcontent" id="popRcontent" required></textarea>
 							</td>
 						</tr>
 					</tbody>

@@ -55,6 +55,18 @@ public class MyQnaService {
 		}
 		return result;
 	}
+
+	public int insertQna(MyQna mqview) {
+		Connection conn = getConnection();
+		int result = qdao.insertQna(conn, mqview);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		return result;
+	}
 	
 	
 }

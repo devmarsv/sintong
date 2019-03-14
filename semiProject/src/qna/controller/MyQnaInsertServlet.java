@@ -37,14 +37,13 @@ public class MyQnaInsertServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		MyQna mqview = new MyQna();
-		int currentPage = Integer.parseInt(request.getParameter("page"));
 		mqview.setmQnaTitle(request.getParameter("mqtitle"));
 		mqview.setQnaQContent(request.getParameter("mqcontent"));
 		mqview.setQnaQid(request.getParameter("mqwriter"));
 				
 		int result = new MyQnaService().insertQna(mqview);
 		if(result > 0) {
-			response.sendRedirect("/semi/myqna?mem_userid=" + mqview.getQnaQid() + "&page=" + currentPage);
+			response.sendRedirect("/semi/myqna?mem_userid=" + mqview.getQnaQid());
 		} else {
 			RequestDispatcher view = request.getRequestDispatcher("views/mypage/mypageError.jsp");
 			request.setAttribute("message", "게시글 등록 실패!");
